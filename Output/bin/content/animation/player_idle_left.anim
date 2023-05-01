@@ -1,0 +1,47 @@
+[Animation Name]
+IDLE_LEFT
+
+[Texture Name]
+PlayerLeft
+[Texture Path]
+texture\link_0.bmp
+
+[Frame Count]
+3
+[Frame Data]
+[Frame Index]
+0
+[Left Top]
+0 130
+[Slice Size]
+120 130
+[Offset]
+0 0
+[Duration]
+0.200000
+
+
+[Frame Index]
+1
+[Left Top]
+120 130
+[Slice Size]
+120 130
+[Offset]
+0 0
+[Duration]
+0.200000
+
+
+[Frame Index]
+2
+[Left Top]
+240 130
+[Slice Size]
+120 130
+[Offset]
+0 0
+[Duration]
+0.200000
+
+

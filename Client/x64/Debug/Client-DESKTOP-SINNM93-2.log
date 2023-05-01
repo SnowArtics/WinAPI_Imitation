@@ -1,0 +1,7 @@
+﻿  CAnimation.cpp
+E:\oneDrive\OneDrive - gachon.ac.kr\WinAPI\Client\struct.h(10,14): warning C4244: 'return': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  CAnimator.cpp
+E:\oneDrive\OneDrive - gachon.ac.kr\WinAPI\Client\struct.h(10,14): warning C4244: 'return': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  CCore.cpp
+E:\oneDrive\OneDrive - gachon.ac.kr\WinAPI\Client\struct.h(10,14): warning C4244: 'return': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Client.vcxproj -> E:\oneDrive\OneDrive - gachon.ac.kr\WinAPI\Output\bin_debug\Client.exe
