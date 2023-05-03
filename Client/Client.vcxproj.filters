@@ -140,6 +140,9 @@
     <Filter Include="Engine\03. Manager\SoundMgr">
       <UniqueIdentifier>{fe40b8c4-2e9a-400e-86a5-d90b0eaaa287}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\05. Scene\Scene_Test">
+      <UniqueIdentifier>{e875b746-408a-481c-aa5d-7a846001da05}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CCore.h">
@@ -277,6 +280,9 @@
     <ClInclude Include="CSoundMgr.h">
       <Filter>Engine\03. Manager\SoundMgr</Filter>
     </ClInclude>
+    <ClInclude Include="CScene_Test.h">
+      <Filter>Engine\05. Scene\Scene_Test</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CCore.cpp">
@@ -396,6 +402,9 @@
     </ClCompile>
     <ClCompile Include="CSoundMgr.cpp">
       <Filter>Engine\03. Manager\SoundMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CScene_Test.cpp">
+      <Filter>Engine\05. Scene\Scene_Test</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

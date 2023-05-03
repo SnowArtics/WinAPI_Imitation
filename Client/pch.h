@@ -32,3 +32,10 @@ using std::wstring;
 #include "func.h"
 
 #pragma comment(lib, "Msimg32.lib")
+
+#include <objidl.h>
+#include <gdiplus.h>
+
+using namespace Gdiplus;
+
+#pragma comment(lib,"Gdiplus.lib")
