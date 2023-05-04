@@ -23,7 +23,7 @@ using std::string;
 using std::wstring;
 
 #include <assert.h>
-//#ifdef UNITY_BUILD
+//#ifdef UNITY_BUILDe
 #include "define.h"
 //#endif
 
@@ -32,6 +32,8 @@ using std::wstring;
 #include "func.h"
 
 #pragma comment(lib, "Msimg32.lib")
+
+#include <cstddef>
 
 #include <objidl.h>
 #include <gdiplus.h>

@@ -3,6 +3,7 @@
 #include "CScene_Start.h"
 #include "CScene_Tool.h"
 #include "CEventMgr.h"
+#include "CScene_Test.h"
 
 CSceneMgr::CSceneMgr()
 	:m_arrScene{}
@@ -21,17 +22,20 @@ CSceneMgr::~CSceneMgr()
 void CSceneMgr::init()
 {
 	//¾À »ı¼º
-	m_arrScene[(UINT)SCENE_TYPE::START] = new CScene_Start;
+	m_arrScene[(UINT)SCENE_TYPE::START] = new CScene_Start();
 	m_arrScene[(UINT)SCENE_TYPE::START]->SetName(L"Start Scene");
 
 	m_arrScene[(UINT)SCENE_TYPE::TOOL] = new CScene_Tool;
 	m_arrScene[(UINT)SCENE_TYPE::TOOL]->SetName(L"Tool Scene");
 
+	m_arrScene[(UINT)SCENE_TYPE::TEST] = new CScene_Test(3,3);
+	m_arrScene[(UINT)SCENE_TYPE::TEST]->SetName(L"Test Scene");
+
 	//m_arrScene[(UINT)SCENE_TYPE::STAGE_01] = new CScene_Stage01;
 	//m_arrScene[(UINT)SCENE_TYPE::STAGE_02] = new CScene_Stage02;
 
 	//ÇöÀç ¾À ÁöÁ¤
-	m_pCurScene = m_arrScene[(UINT)SCENE_TYPE::START];
+	m_pCurScene = m_arrScene[(UINT)SCENE_TYPE::TEST];
 
 	m_pCurScene->Enter();
 }

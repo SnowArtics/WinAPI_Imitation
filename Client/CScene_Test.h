@@ -4,6 +4,7 @@ class CScene_Test :
     public CScene
 {
 private:
+    vector<vector<CObject*> > m_vMap;
 
 public:
     virtual void update();
@@ -11,13 +12,11 @@ public:
     virtual void Enter();
     virtual void Exit();
 
+public:
+    
 
 public:
-
-
-
-public:
-    CScene_Test();
+    CScene_Test(int _row, int _column);
     ~CScene_Test();
 };
 

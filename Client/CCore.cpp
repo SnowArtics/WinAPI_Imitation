@@ -56,10 +56,10 @@ int CCore::init(HWND _hWnd, POINT _ptResolution)
 	//g_obj.SetPos(Vec2((float)(m_ptResolution.x / 2),(float) (m_ptResolution.y / 2)));
 	//g_obj.SetScale(Vec2(100,100
 
-	CResMgr::GetInst()->LoadSound(L"Menu-Theme", L"sound\\Menu-Theme.wav");
+	/*CResMgr::GetInst()->LoadSound(L"Menu-Theme", L"sound\\Menu-Theme.wav");
 	CSound* pNewSound = CResMgr::GetInst()->FindSound(L"Menu-Theme");
 
-	pNewSound->Play();
+	pNewSound->Play();*/
 
 	//pNewSound->PlayToBGM(true);
 	//pNewSound->SetPosition(10.f); // 백분률, 소리 위치 설정

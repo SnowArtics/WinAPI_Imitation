@@ -143,6 +143,15 @@
     <Filter Include="Engine\05. Scene\Scene_Test">
       <UniqueIdentifier>{e875b746-408a-481c-aa5d-7a846001da05}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\04. Object\background">
+      <UniqueIdentifier>{382ee520-e99f-4f01-96bd-fe5c59674570}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\04. Object\background\door">
+      <UniqueIdentifier>{442fff58-386e-40ce-9641-85f7dc55248a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\04. Object\background\wall">
+      <UniqueIdentifier>{1808e15c-37f7-4467-8e55-5543ac1aa31b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CCore.h">
@@ -283,6 +292,9 @@
     <ClInclude Include="CScene_Test.h">
       <Filter>Engine\05. Scene\Scene_Test</Filter>
     </ClInclude>
+    <ClInclude Include="CBackground.h">
+      <Filter>Engine\04. Object\background</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CCore.cpp">
@@ -405,6 +417,9 @@
     </ClCompile>
     <ClCompile Include="CScene_Test.cpp">
       <Filter>Engine\05. Scene\Scene_Test</Filter>
+    </ClCompile>
+    <ClCompile Include="CBackground.cpp">
+      <Filter>Engine\04. Object\background</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -27,6 +27,7 @@
 #include "CTimeMgr.h"
 
 #include "CGround.h"
+#include "CBackground.h"
 
 void CScene_Start::update()
 {
@@ -154,6 +155,12 @@ void CScene_Start::Enter()
 	pGround->SetPos(Vec2(960.f, 740.f));
 	pGround->SetScale(Vec2(700.f, 120.f));
 	AddObject(pGround, GROUP_TYPE::GROUND);
+
+	//CObject* pBackground = new CBackground;
+	//pBackground->SetName(L"Background");
+	//pBackground->SetPos(Vec2(0.f, 0.f));
+	//pBackground->SetScale(Vec2(600.f, 600.f));
+	//AddObject(pBackground, GROUP_TYPE::BACKGROUND);
 
 	//타일 로딩
 	//LoadTile(L"Tile\\Start.tile");

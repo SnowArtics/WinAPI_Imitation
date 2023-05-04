@@ -1,29 +1,3 @@
-﻿  pch.cpp
-E:\oneDrive\OneDrive - gachon.ac.kr\WinAPI_imitation\Client\struct.h(15,14): warning C4244: 'return': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\um\GdiplusBase.h(30,21): error C2059: 구문 오류: '상수'
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\um\GdiplusBase.h(31,5): error C2091: 함수가 함수를 반환합니다.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\um\GdiplusBase.h(30,12): error C2802: 정적 멤버 'operator new'에 정식 매개 변수가 없습니다.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\um\GdiplusBase.h(31,5): error C2333: 'Gdiplus::GdiplusBase::operator new': 함수 선언에 오류가 있습니다. 함수 본문을 건너뜁니다.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\um\GdiplusBase.h(38,21): error C2059: 구문 오류: '상수'
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\um\GdiplusBase.h(38,26): error C2090: 함수가 배열을 반환합니다.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\um\GdiplusBase.h(40,8): error C2059: 구문 오류: 'return'
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\um\GdiplusBase.h(40,45): error C2238: ';' 앞에 예기치 않은 토큰이 있습니다.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\um\GdiplusBase.h(42,1): error C2059: 구문 오류: '}'
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\um\GdiplusBase.h(42,1): error C2143: 구문 오류: ';'이(가) '}' 앞에 없습니다.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\um\GdiplusHeaders.h(34,1): error C2504: 'GdiplusBase': 기본 클래스를 정의하지 않았습니다.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\um\GdiplusHeaders.h(187,1): error C2504: 'GdiplusBase': 기본 클래스를 정의하지 않았습니다.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\um\GdiplusHeaders.h(257,1): error C2504: 'GdiplusBase': 기본 클래스를 정의하지 않았습니다.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\um\GdiplusHeaders.h(320,1): error C2504: 'GdiplusBase': 기본 클래스를 정의하지 않았습니다.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\um\GdiplusHeaders.h(385,1): error C2504: 'GdiplusBase': 기본 클래스를 정의하지 않았습니다.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\um\GdiplusHeaders.h(652,1): error C2504: 'GdiplusBase': 기본 클래스를 정의하지 않았습니다.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\um\GdiplusHeaders.h(721,1): error C2504: 'GdiplusBase': 기본 클래스를 정의하지 않았습니다.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\um\GdiplusImageAttributes.h(48,1): error C2504: 'GdiplusBase': 기본 클래스를 정의하지 않았습니다.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\um\GdiplusMatrix.h(26,1): error C2504: 'GdiplusBase': 기본 클래스를 정의하지 않았습니다.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\um\GdiplusBrush.h(34,1): error C2504: 'GdiplusBase': 기본 클래스를 정의하지 않았습니다.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\um\GdiplusPen.h(32,1): error C2504: 'GdiplusBase': 기본 클래스를 정의하지 않았습니다.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\um\GdiplusStringFormat.h(28,1): error C2504: 'GdiplusBase': 기본 클래스를 정의하지 않았습니다.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\um\GdiplusPath.h(31,1): error C2504: 'GdiplusBase': 기본 클래스를 정의하지 않았습니다.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\um\GdiplusPath.h(918,1): error C2504: 'GdiplusBase': 기본 클래스를 정의하지 않았습니다.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\um\GdiplusGraphics.h(31,1): error C2504: 'GdiplusBase': 기본 클래스를 정의하지 않았습니다.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\um\gdiplus.h(82,1): error C2059: 구문 오류: '}'
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\um\gdiplus.h(82,1): error C2143: 구문 오류: ';'이(가) '}' 앞에 없습니다.
+﻿  unity_XTE0JGTF01L2NPW3.cpp
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+  Client.vcxproj -> C:\Users\deany\OneDrive - gachon.ac.kr\WinAPI_imitation\Output\bin_debug\Client.exe
