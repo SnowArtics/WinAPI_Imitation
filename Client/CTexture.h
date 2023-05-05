@@ -17,6 +17,7 @@ public:
     UINT Height() { return m_bitInfo.bmHeight; }
 
     HDC GetDC() { return m_dc; }
+    HBITMAP GetHBitmap() { return m_hBit; }
 
 private:
     CTexture();

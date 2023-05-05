@@ -34,6 +34,7 @@ enum class GROUP_TYPE {//렌더링 기준이고 충돌 기준임
 
 	DEFAULT,
 	BACKGROUND,
+	BRIDGE,
 	TILE,
 	GROUND,
 	MONSTER,

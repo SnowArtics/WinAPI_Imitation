@@ -152,6 +152,9 @@
     <Filter Include="Engine\04. Object\background\wall">
       <UniqueIdentifier>{1808e15c-37f7-4467-8e55-5543ac1aa31b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\04. Object\background\bridge">
+      <UniqueIdentifier>{65f3ed74-52e0-4dcc-877c-df3370998ddf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CCore.h">
@@ -295,6 +298,9 @@
     <ClInclude Include="CBackground.h">
       <Filter>Engine\04. Object\background</Filter>
     </ClInclude>
+    <ClInclude Include="CBridge.h">
+      <Filter>Engine\04. Object\background\bridge</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CCore.cpp">
@@ -420,6 +426,9 @@
     </ClCompile>
     <ClCompile Include="CBackground.cpp">
       <Filter>Engine\04. Object\background</Filter>
+    </ClCompile>
+    <ClCompile Include="CBridge.cpp">
+      <Filter>Engine\04. Object\background\bridge</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

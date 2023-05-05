@@ -1,9 +1,13 @@
 #pragma once
 #include "CScene.h"
+
+class CObject;
+
 class CScene_Test :
     public CScene
 {
 private:
+    //이 맵으로 어떤 행의 지형에 접속할 수 있다.
     vector<vector<CObject*> > m_vMap;
 
 public:
@@ -13,7 +17,8 @@ public:
     virtual void Exit();
 
 public:
-    
+    vector<char> makeBridgeDirection(int _row, int _column, int _size);
+    wstring makeBackgroundName(int _row, int _column);
 
 public:
     CScene_Test(int _row, int _column);
