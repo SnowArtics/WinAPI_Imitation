@@ -1,3 +1,138 @@
-﻿  unity_6TH679R0PFM75WB5.cpp
-  C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-  Client.vcxproj -> D:\Snow_WorkSpace\WinAPI_Imitation\Output\bin_debug\Client.exe
+﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(534,5): warning MSB8028: 중간 디렉터리(x64\Debug\)에 다른 프로젝트(Client-SnowArtics.vcxproj)에서 공유하는 파일이 포함되어 있습니다.  이로 인해 잘못된 정리 및 다시 빌드 동작이 수행될 수 있습니다.
+  pch.cpp
+C:\Users\deany\OneDrive - gachon.ac.kr\WinAPI_imitation\Client\struct.h(15,14): warning C4244: 'return': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\GdiplusImageAttributes.h(73,1): warning C4291: 'void *operator new(size_t,int,const char *,int)': 일치하는 operator delete가 없습니다. 초기화할 때 예외가 Throw되지 않으면 메모리가 확보되지 않습니다.
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\vcruntime_new_debug.h(26): message : 'operator new' 선언을 참조하십시오.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\GdiplusMatrix.h(101,1): warning C4291: 'void *operator new(size_t,int,const char *,int)': 일치하는 operator delete가 없습니다. 초기화할 때 예외가 Throw되지 않으면 메모리가 확보되지 않습니다.
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\vcruntime_new_debug.h(26): message : 'operator new' 선언을 참조하십시오.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\GdiplusBrush.h(50,1): warning C4291: 'void *operator new(size_t,int,const char *,int)': 일치하는 operator delete가 없습니다. 초기화할 때 예외가 Throw되지 않으면 메모리가 확보되지 않습니다.
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\vcruntime_new_debug.h(26): message : 'operator new' 선언을 참조하십시오.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\GdiplusBrush.h(380,1): warning C4291: 'void *operator new(size_t,int,const char *,int)': 일치하는 operator delete가 없습니다. 초기화할 때 예외가 Throw되지 않으면 메모리가 확보되지 않습니다.
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\vcruntime_new_debug.h(26): message : 'operator new' 선언을 참조하십시오.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\GdiplusPen.h(66,1): warning C4291: 'void *operator new(size_t,int,const char *,int)': 일치하는 operator delete가 없습니다. 초기화할 때 예외가 Throw되지 않으면 메모리가 확보되지 않습니다.
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\vcruntime_new_debug.h(26): message : 'operator new' 선언을 참조하십시오.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\GdiplusPen.h(328,1): warning C4291: 'void *operator new(size_t,int,const char *,int)': 일치하는 operator delete가 없습니다. 초기화할 때 예외가 Throw되지 않으면 메모리가 확보되지 않습니다.
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\vcruntime_new_debug.h(26): message : 'operator new' 선언을 참조하십시오.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\GdiplusPen.h(332,1): warning C4291: 'void *operator new(size_t,int,const char *,int)': 일치하는 operator delete가 없습니다. 초기화할 때 예외가 Throw되지 않으면 메모리가 확보되지 않습니다.
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\vcruntime_new_debug.h(26): message : 'operator new' 선언을 참조하십시오.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\GdiplusPen.h(336,1): warning C4291: 'void *operator new(size_t,int,const char *,int)': 일치하는 operator delete가 없습니다. 초기화할 때 예외가 Throw되지 않으면 메모리가 확보되지 않습니다.
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\vcruntime_new_debug.h(26): message : 'operator new' 선언을 참조하십시오.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\GdiplusPen.h(340,1): warning C4291: 'void *operator new(size_t,int,const char *,int)': 일치하는 operator delete가 없습니다. 초기화할 때 예외가 Throw되지 않으면 메모리가 확보되지 않습니다.
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\vcruntime_new_debug.h(26): message : 'operator new' 선언을 참조하십시오.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\GdiplusPen.h(344,1): warning C4291: 'void *operator new(size_t,int,const char *,int)': 일치하는 operator delete가 없습니다. 초기화할 때 예외가 Throw되지 않으면 메모리가 확보되지 않습니다.
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\vcruntime_new_debug.h(26): message : 'operator new' 선언을 참조하십시오.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\GdiplusStringFormat.h(71,1): warning C4291: 'void *operator new(size_t,int,const char *,int)': 일치하는 operator delete가 없습니다. 초기화할 때 예외가 Throw되지 않으면 메모리가 확보되지 않습니다.
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\vcruntime_new_debug.h(26): message : 'operator new' 선언을 참조하십시오.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\GdiplusPath.h(82,1): warning C4291: 'void *operator new(size_t,int,const char *,int)': 일치하는 operator delete가 없습니다. 초기화할 때 예외가 Throw되지 않으면 메모리가 확보되지 않습니다.
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\vcruntime_new_debug.h(26): message : 'operator new' 선언을 참조하십시오.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\GdiplusLineCaps.h(156,65): warning C4291: 'void *operator new(size_t,int,const char *,int)': 일치하는 operator delete가 없습니다. 초기화할 때 예외가 Throw되지 않으면 메모리가 확보되지 않습니다.
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\vcruntime_new_debug.h(26): message : 'operator new' 선언을 참조하십시오.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\GdiplusGraphics.h(45,1): warning C4291: 'void *operator new(size_t,int,const char *,int)': 일치하는 operator delete가 없습니다. 초기화할 때 예외가 Throw되지 않으면 메모리가 확보되지 않습니다.
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\vcruntime_new_debug.h(26): message : 'operator new' 선언을 참조하십시오.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\GdiplusGraphics.h(51,1): warning C4291: 'void *operator new(size_t,int,const char *,int)': 일치하는 operator delete가 없습니다. 초기화할 때 예외가 Throw되지 않으면 메모리가 확보되지 않습니다.
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\vcruntime_new_debug.h(26): message : 'operator new' 선언을 참조하십시오.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\GdiplusGraphics.h(57,1): warning C4291: 'void *operator new(size_t,int,const char *,int)': 일치하는 operator delete가 없습니다. 초기화할 때 예외가 Throw되지 않으면 메모리가 확보되지 않습니다.
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\vcruntime_new_debug.h(26): message : 'operator new' 선언을 참조하십시오.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\GdiplusGraphics.h(62,1): warning C4291: 'void *operator new(size_t,int,const char *,int)': 일치하는 operator delete가 없습니다. 초기화할 때 예외가 Throw되지 않으면 메모리가 확보되지 않습니다.
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\vcruntime_new_debug.h(26): message : 'operator new' 선언을 참조하십시오.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\GdiplusRegion.h(91,46): warning C4291: 'void *operator new(size_t,int,const char *,int)': 일치하는 operator delete가 없습니다. 초기화할 때 예외가 Throw되지 않으면 메모리가 확보되지 않습니다.
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\vcruntime_new_debug.h(26): message : 'operator new' 선언을 참조하십시오.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\GdiplusRegion.h(117,29): warning C4291: 'void *operator new(size_t,int,const char *,int)': 일치하는 operator delete가 없습니다. 초기화할 때 예외가 Throw되지 않으면 메모리가 확보되지 않습니다.
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\vcruntime_new_debug.h(26): message : 'operator new' 선언을 참조하십시오.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\GdiplusFontFamily.h(123,51): warning C4291: 'void *operator new(size_t,int,const char *,int)': 일치하는 operator delete가 없습니다. 초기화할 때 예외가 Throw되지 않으면 메모리가 확보되지 않습니다.
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\vcruntime_new_debug.h(26): message : 'operator new' 선언을 참조하십시오.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\GdiplusFont.h(178,42): warning C4291: 'void *operator new(size_t,int,const char *,int)': 일치하는 operator delete가 없습니다. 초기화할 때 예외가 Throw되지 않으면 메모리가 확보되지 않습니다.
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\vcruntime_new_debug.h(26): message : 'operator new' 선언을 참조하십시오.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\GdiplusBitmap.h(80,5): warning C4291: 'void *operator new(size_t,int,const char *,int)': 일치하는 operator delete가 없습니다. 초기화할 때 예외가 Throw되지 않으면 메모리가 확보되지 않습니다.
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\vcruntime_new_debug.h(26): message : 'operator new' 선언을 참조하십시오.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\GdiplusBitmap.h(92,5): warning C4291: 'void *operator new(size_t,int,const char *,int)': 일치하는 operator delete가 없습니다. 초기화할 때 예외가 Throw되지 않으면 메모리가 확보되지 않습니다.
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\vcruntime_new_debug.h(26): message : 'operator new' 선언을 참조하십시오.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\GdiplusBitmap.h(108,44): warning C4291: 'void *operator new(size_t,int,const char *,int)': 일치하는 operator delete가 없습니다. 초기화할 때 예외가 Throw되지 않으면 메모리가 확보되지 않습니다.
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\vcruntime_new_debug.h(26): message : 'operator new' 선언을 참조하십시오.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\GdiplusBitmap.h(338,55): warning C4291: 'void *operator new(size_t,int,const char *,int)': 일치하는 operator delete가 없습니다. 초기화할 때 예외가 Throw되지 않으면 메모리가 확보되지 않습니다.
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\vcruntime_new_debug.h(26): message : 'operator new' 선언을 참조하십시오.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\GdiplusBitmap.h(715,5): warning C4291: 'void *operator new(size_t,int,const char *,int)': 일치하는 operator delete가 없습니다. 초기화할 때 예외가 Throw되지 않으면 메모리가 확보되지 않습니다.
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\vcruntime_new_debug.h(26): message : 'operator new' 선언을 참조하십시오.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\GdiplusBitmap.h(727,5): warning C4291: 'void *operator new(size_t,int,const char *,int)': 일치하는 operator delete가 없습니다. 초기화할 때 예외가 Throw되지 않으면 메모리가 확보되지 않습니다.
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\vcruntime_new_debug.h(26): message : 'operator new' 선언을 참조하십시오.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\GdiplusBitmap.h(735,30): warning C4291: 'void *operator new(size_t,int,const char *,int)': 일치하는 operator delete가 없습니다. 초기화할 때 예외가 Throw되지 않으면 메모리가 확보되지 않습니다.
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\vcruntime_new_debug.h(26): message : 'operator new' 선언을 참조하십시오.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\GdiplusBitmap.h(743,51): warning C4291: 'void *operator new(size_t,int,const char *,int)': 일치하는 operator delete가 없습니다. 초기화할 때 예외가 Throw되지 않으면 메모리가 확보되지 않습니다.
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\vcruntime_new_debug.h(26): message : 'operator new' 선언을 참조하십시오.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\GdiplusBitmap.h(752,32): warning C4291: 'void *operator new(size_t,int,const char *,int)': 일치하는 operator delete가 없습니다. 초기화할 때 예외가 Throw되지 않으면 메모리가 확보되지 않습니다.
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\vcruntime_new_debug.h(26): message : 'operator new' 선언을 참조하십시오.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\GdiplusBitmap.h(760,28): warning C4291: 'void *operator new(size_t,int,const char *,int)': 일치하는 operator delete가 없습니다. 초기화할 때 예외가 Throw되지 않으면 메모리가 확보되지 않습니다.
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\vcruntime_new_debug.h(26): message : 'operator new' 선언을 참조하십시오.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\GdiplusBitmap.h(768,44): warning C4291: 'void *operator new(size_t,int,const char *,int)': 일치하는 operator delete가 없습니다. 초기화할 때 예외가 Throw되지 않으면 메모리가 확보되지 않습니다.
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\vcruntime_new_debug.h(26): message : 'operator new' 선언을 참조하십시오.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\GdiplusBitmap.h(823,39): warning C4291: 'void *operator new(size_t,int,const char *,int)': 일치하는 operator delete가 없습니다. 초기화할 때 예외가 Throw되지 않으면 메모리가 확보되지 않습니다.
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\vcruntime_new_debug.h(26): message : 'operator new' 선언을 참조하십시오.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\GdiplusBitmap.h(866,39): warning C4291: 'void *operator new(size_t,int,const char *,int)': 일치하는 operator delete가 없습니다. 초기화할 때 예외가 Throw되지 않으면 메모리가 확보되지 않습니다.
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\vcruntime_new_debug.h(26): message : 'operator new' 선언을 참조하십시오.
+  unity_DWLNZ126QGBL4IBP.cpp
+  unity_I6MCL2I0ORZ6CMDV.cpp
+  unity_NJLXZGFLLQ3T4IJL.cpp
+  unity_V1OV5DET10RMF7H2.cpp
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+C:\Users\deany\OneDrive - gachon.ac.kr\WinAPI_imitation\Client\CTexture.cpp(18,9): warning C4551: 함수 호출에 인수 목록이 없습니다. (소스 파일 컴파일 중 C:\Users\deany\OneDrive - gachon.ac.kr\WinAPI_imitation\Client\unity_NJLXZGFLLQ3T4IJL.cpp)
+C:\Users\deany\OneDrive - gachon.ac.kr\WinAPI_imitation\Client\CTexture.cpp(28,10): warning C4551: 함수 호출에 인수 목록이 없습니다. (소스 파일 컴파일 중 C:\Users\deany\OneDrive - gachon.ac.kr\WinAPI_imitation\Client\unity_NJLXZGFLLQ3T4IJL.cpp)
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\xstring(2824,53): warning C4244: '인수': 'wchar_t'에서 'const _Elem'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              _Elem=char
+          ] (소스 파일 컴파일 중 C:\Users\deany\OneDrive - gachon.ac.kr\WinAPI_imitation\Client\unity_I6MCL2I0ORZ6CMDV.cpp)
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\xstring(2664): message : 컴파일되는 함수 템플릿 인스턴스화 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct_from_iter<wchar_t*>(_Iter,const _Iter)'에 대한 참조를 확인하세요.
+          with
+          [
+              _Iter=wchar_t *
+          ] (소스 파일 컴파일 중 C:\Users\deany\OneDrive - gachon.ac.kr\WinAPI_imitation\Client\unity_I6MCL2I0ORZ6CMDV.cpp)
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\xstring(2664): message : 컴파일되는 함수 템플릿 인스턴스화 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct_from_iter<wchar_t*>(_Iter,const _Iter)'에 대한 참조를 확인하세요.
+          with
+          [
+              _Iter=wchar_t *
+          ] (소스 파일 컴파일 중 C:\Users\deany\OneDrive - gachon.ac.kr\WinAPI_imitation\Client\unity_I6MCL2I0ORZ6CMDV.cpp)
+C:\Users\deany\OneDrive - gachon.ac.kr\WinAPI_imitation\Client\CAnimation.cpp(89): message : 컴파일되는 함수 템플릿 인스턴스화 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)'에 대한 참조를 확인하세요.
+          with
+          [
+              _Elem=wchar_t,
+              _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
+              _Alloc=std::allocator<char>
+          ] (소스 파일 컴파일 중 C:\Users\deany\OneDrive - gachon.ac.kr\WinAPI_imitation\Client\unity_I6MCL2I0ORZ6CMDV.cpp)
+C:\Users\deany\OneDrive - gachon.ac.kr\WinAPI_imitation\Client\CAnimation.cpp(89): message : 컴파일되는 함수 템플릿 인스턴스화 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)'에 대한 참조를 확인하세요.
+          with
+          [
+              _Elem=wchar_t,
+              _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
+              _Alloc=std::allocator<char>
+          ] (소스 파일 컴파일 중 C:\Users\deany\OneDrive - gachon.ac.kr\WinAPI_imitation\Client\unity_I6MCL2I0ORZ6CMDV.cpp)
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\xstring(2824,53): warning C4244: '인수': 'const wchar_t'에서 'const _Elem'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              _Elem=char
+          ] (소스 파일 컴파일 중 C:\Users\deany\OneDrive - gachon.ac.kr\WinAPI_imitation\Client\unity_I6MCL2I0ORZ6CMDV.cpp)
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\xstring(2664): message : 컴파일되는 함수 템플릿 인스턴스화 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct_from_iter<const wchar_t*>(_Iter,const _Iter)'에 대한 참조를 확인하세요.
+          with
+          [
+              _Iter=const wchar_t *
+          ] (소스 파일 컴파일 중 C:\Users\deany\OneDrive - gachon.ac.kr\WinAPI_imitation\Client\unity_I6MCL2I0ORZ6CMDV.cpp)
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\xstring(2664): message : 컴파일되는 함수 템플릿 인스턴스화 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct_from_iter<const wchar_t*>(_Iter,const _Iter)'에 대한 참조를 확인하세요.
+          with
+          [
+              _Iter=const wchar_t *
+          ] (소스 파일 컴파일 중 C:\Users\deany\OneDrive - gachon.ac.kr\WinAPI_imitation\Client\unity_I6MCL2I0ORZ6CMDV.cpp)
+C:\Users\deany\OneDrive - gachon.ac.kr\WinAPI_imitation\Client\CAnimation.cpp(99): message : 컴파일되는 함수 템플릿 인스턴스화 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_const_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)'에 대한 참조를 확인하세요.
+          with
+          [
+              _Elem=wchar_t,
+              _Iter=std::_String_const_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
+              _Alloc=std::allocator<char>
+          ] (소스 파일 컴파일 중 C:\Users\deany\OneDrive - gachon.ac.kr\WinAPI_imitation\Client\unity_I6MCL2I0ORZ6CMDV.cpp)
+C:\Users\deany\OneDrive - gachon.ac.kr\WinAPI_imitation\Client\CAnimation.cpp(99): message : 컴파일되는 함수 템플릿 인스턴스화 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_const_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)'에 대한 참조를 확인하세요.
+          with
+          [
+              _Elem=wchar_t,
+              _Iter=std::_String_const_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
+              _Alloc=std::allocator<char>
+          ] (소스 파일 컴파일 중 C:\Users\deany\OneDrive - gachon.ac.kr\WinAPI_imitation\Client\unity_I6MCL2I0ORZ6CMDV.cpp)
+  Client.vcxproj -> C:\Users\deany\OneDrive - gachon.ac.kr\WinAPI_imitation\Output\bin_debug\Client.exe

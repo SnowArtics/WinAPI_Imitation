@@ -15,6 +15,7 @@
 #include "CPathMgr.h"
 
 void ChangeScene(DWORD_PTR, DWORD_PTR);
+void SpawnCreature(DWORD_PTR, DWORD_PTR);
 
 void CScene_Tool::update()
 {
@@ -198,6 +199,11 @@ CScene_Tool::~CScene_Tool()
 //전역함수임
 void ChangeScene(DWORD_PTR, DWORD_PTR) {
 	ChangeScene(SCENE_TYPE::START);
+}
+
+//크리쳐를 생성하는 전역 함수임
+void SpawnCreature(DWORD_PTR, DWORD_PTR, DWORD_PTR) {
+
 }
 
 

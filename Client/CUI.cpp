@@ -51,13 +51,13 @@ void CUI::render(HDC _dc)
 			, (int)(vPos.x + vScale.x)
 			, (int)(vPos.y + vScale.y));
 	}
-	else {
-		Rectangle(_dc
-			, (int)(vPos.x)
-			, (int)(vPos.y)
-			, (int)(vPos.x + vScale.x)
-			, (int)(vPos.y + vScale.y));
-	}
+	//else {
+	//	Rectangle(_dc
+	//		, (int)(vPos.x)
+	//		, (int)(vPos.y)
+	//		, (int)(vPos.x + vScale.x)
+	//		, (int)(vPos.y + vScale.y));
+	//}
 
 
 
@@ -137,6 +137,7 @@ CUI::CUI(bool _bCamAff)
 	, m_bMouseOn(false)
 	, m_bLbtnDown(false)
 	, m_bRbtnDown(false)
+	, m_pUITexture(nullptr)
 {
 }
 
@@ -151,6 +152,7 @@ CUI::CUI(const CUI& _origin)
 	for (size_t i = 0; i < _origin.m_vecChildUI.size(); i++) {
 		AddChild(_origin.m_vecChildUI[i]->Clone());
 	}
+	m_pUITexture = _origin.m_pUITexture;
 }
 
 CUI::~CUI()

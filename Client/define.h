@@ -42,6 +42,22 @@ enum class GROUP_TYPE {//렌더링 기준이고 충돌 기준임
 	PROJ_PLAYER,
 	PROJ_MONSTER,
 
+	P1_MELEE_CREATURE,
+	P1_RANGE_CREATURE,
+	P1_BUILDING,
+
+	P2_MELEE_CREATURE,
+	P2_RANGE_CREATURE,
+	P2_BUILDING,
+
+	P3_MELEE_CREATURE,
+	P3_RANGE_CREATURE,
+	P3_BUILDING,
+
+	P4_MELEE_CREATURE,
+	P4_RANGE_CREATURE,
+	P4_BUILDING,
+
 	UI = 31,
 	END = 32,
 };
@@ -87,10 +103,9 @@ enum class EVENT_TYPE {
 
 enum class MON_STATE {
 	IDLE,//대기
-	PATROL,//순찰
 	TRACE,//쫓기
-	ATT,//공격
-	RUN,//도주
+	ATT,	//가까운 상대 공격
+	TARGET_ATT,// 지정한 타겟공격
 	DEAD,//사망
 	END,
 };
