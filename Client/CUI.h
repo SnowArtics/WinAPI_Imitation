@@ -6,6 +6,7 @@ class CUI :
 private:
     vector<CUI*>    m_vecChildUI;
     CUI*            m_pParentUI;
+    CTexture*       m_pUITexture;
 
     Vec2            m_vFinalPos;//최종 본인의 위치
 
@@ -23,6 +24,11 @@ public:
 
     void AddChild(CUI* _pUI) { m_vecChildUI.push_back(_pUI); _pUI->m_pParentUI = this; }
     const vector<CUI*> GetChildUI() { return m_vecChildUI; }
+
+    void SetTexture(CTexture* _pTex) { m_pUITexture = _pTex; }
+
+    CTexture* GetTexture() { return m_pUITexture; }
+    bool GetCamAffected() { return m_bCamAffected; }
 
 public:
     virtual void update();

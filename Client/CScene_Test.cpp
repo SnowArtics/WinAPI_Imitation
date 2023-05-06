@@ -1,10 +1,17 @@
 #include "pch.h"
 #include "CScene_Test.h"
+#include <locale>
 
 #include "CCore.h"
 #include "CCamera.h"
 
+#include "CPathMgr.h"
+#include "CResMgr.h"
+
 #include "CBackground.h"
+#include "CBtnUI.h"
+#include "CTexture.h"
+#include "CPanelUI.h"
 
 void CScene_Test::update()
 {
@@ -97,6 +104,104 @@ wstring CScene_Test::makeBackgroundName(int _row, int _column)
 	return resultName;
 }
 
+void CScene_Test::LoadUI(const wstring& _strRelativePath, string _pageName)
+{
+	wstring strFilePath = CPathMgr::GetInst()->GetContentPath();
+	strFilePath += _strRelativePath;
+
+	FILE* pFile = nullptr;
+	_wfopen_s(&pFile, strFilePath.c_str(), L"rb");
+	assert(pFile);
+
+	string str;
+	char szBuff[256] = {};
+
+	//여기는 왼쪽 정보패널 적기
+	FScanf(szBuff, pFile);
+	for (int i = 0; i < 5; i++) {
+		FScanf(szBuff, pFile);
+		FScanf(szBuff, pFile);
+		FScanf(szBuff, pFile);
+
+		//이게 경로임
+		str = szBuff;
+
+		//UI 키값 생성해주기
+		string prevUiKey = str.substr(10, str.size() - 10 - 5);
+		wstring uiKey;
+		uiKey.assign(prevUiKey.begin(), prevUiKey.end());
+
+		//UI 경로값 생성해주기
+		str = str.substr(0, str.size() - 1);
+		wstring uiRelativePath;
+		uiRelativePath.assign(str.begin(), str.end());
+
+		CPanelUI* pPanelUI = new CPanelUI;
+		pPanelUI->SetScale(Vec2(85.f, 35.f));
+		pPanelUI->SetPos(Vec2(20.f, 35.f*i+20.f));
+		//버튼 UI에 이미지 넣어주기
+		CTexture* pTex = CResMgr::GetInst()->LoadTexture(uiKey, uiRelativePath);
+		pPanelUI->SetTexture(pTex);
+		//여기에 버튼 클릭시 행동 넣어주기
+		//
+		AddObject(pPanelUI, GROUP_TYPE::UI);
+	}
+
+
+
+	str = str.substr(0, str.size() - 1);
+	wstring uiRelativePath;
+	uiRelativePath.assign(str.begin(), str.end());
+
+	while (true) {
+		FScanf(szBuff, pFile);
+		str = szBuff;
+		str = str.substr(0, str.size() - 1);
+		if (str == _pageName)
+			break;
+	}
+
+	FScanf(szBuff, pFile);
+	FScanf(szBuff, pFile);
+	FScanf(szBuff, pFile);
+
+	//여기에 UI의 개수가 몇개인지 들어옴
+	str = szBuff;
+	//int로 변환
+	int uiCount = std::stoi(str);
+
+	for (int i = 0; i < uiCount; i++) {
+		FScanf(szBuff, pFile);
+		FScanf(szBuff, pFile);
+		FScanf(szBuff, pFile);
+
+		//이게 경로임
+		str = szBuff;
+
+		//UI 키값 생성해주기
+		string prevUiKey = str.substr(10, str.size()-10-5);
+		wstring uiKey;
+		uiKey.assign(prevUiKey.begin(), prevUiKey.end());
+
+		//UI 경로값 생성해주기
+		str = str.substr(0,str.size() - 1);
+		wstring uiRelativePath;
+		uiRelativePath.assign(str.begin(), str.end());
+
+		CBtnUI* pBtnUI = new CBtnUI;
+		pBtnUI->SetScale(Vec2(66.f, 56.f));
+		pBtnUI->SetPos(Vec2(90.f*i+200.f, 20.f));
+		//버튼 UI에 이미지 넣어주기
+		CTexture* pTex = CResMgr::GetInst()->LoadTexture(uiKey, uiRelativePath);
+		pBtnUI->SetTexture(pTex);
+		//여기에 버튼 클릭시 행동 넣어주기
+		//
+		AddObject(pBtnUI, GROUP_TYPE::UI);
+	}
+
+	fclose(pFile);
+}
+
 CScene_Test::CScene_Test(int _row, int _column)
 {
 	m_vMap.resize(_row);
@@ -113,6 +218,8 @@ CScene_Test::CScene_Test(int _row, int _column)
 			m_vMap[i].push_back(pBackground);
 		}
 	}
+
+	LoadUI(L"ui\\ui.info", "[page1]");
 }
 
 CScene_Test::~CScene_Test()

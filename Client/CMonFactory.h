@@ -3,9 +3,11 @@
 class CMonster;
 
 enum class MON_TYPE {
-	NORMAL,
+	WORKER,
+	MELEE,
 	RANGE,
-
+	BUILDING,
+	NORMAL,
 };
 
 class CMonFactory

@@ -72,7 +72,6 @@ void CTexture::Load(const wstring& _strFilePath)
 
 	//비트맵 정보 저장
 	GetObject(m_hBit, sizeof(BITMAP), &m_bitInfo);
-	
 	GdiplusShutdown(gdiplusToken);
 }
 
