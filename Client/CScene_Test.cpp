@@ -7,20 +7,83 @@
 
 #include "CPathMgr.h"
 #include "CResMgr.h"
+#include "CKeyMgr.h"
 
 #include "CBackground.h"
 #include "CBtnUI.h"
 #include "CTexture.h"
 #include "CPanelUI.h"
+#include "SelectGDI.h"
 
 void CScene_Test::update()
 {
 	CScene::update();
+
+	if (KEY_TAP(KEY::RBTN)) {
+		m_bTriggerCursor = false;
+		m_pCursorIcon = nullptr;
+	}
+
+	//마우스 왼쪽 버튼을 눌렀을 때, 드래그 시작.
+	if (KEY_TAP(KEY::LBTN)&&!m_bTriggerCursor) {
+		m_vDragStart = MOUSE_POS;
+		m_bDragOn = true;
+	}
+	//마우스 왼쪽 버튼을 계속 누르고 있어야 함.
+	if (m_bDragOn && KEY_HOLD(KEY::LBTN)) {
+		m_bDragOn = false;
+	}
+	//왼쪽 버튼을 때면 드래그 작동이 끝나고, _vPos 
+	if (KEY_AWAY(KEY::LBTN)&&m_bDragOn) {
+		Vec2 _vPos = MOUSE_POS;
+		m_vDragSize = m_vDragStart - _vPos;
+		m_bDragOn = false;
+	}
 }
 
 void CScene_Test::render(HDC _dc)
 {
 	CScene::render(_dc);
+
+	//ButtonPanel을 클릭했을 때
+	if (m_bTriggerCursor && m_pCursorIcon) {
+		//m_pCursorIcon의 크기를 저장
+		UINT iWidth = m_pCursorIcon->Width();
+		UINT iHeight = m_pCursorIcon->Height();
+
+		iWidth = m_pCursorIcon->Width();
+		iHeight = m_pCursorIcon->Height();
+
+		assert(m_pCursorIcon);
+
+		Vec2 mousePos = MOUSE_POS;
+
+		TransparentBlt(_dc
+			, (int)mousePos.x
+			, (int)mousePos.y
+			, iWidth
+			, iHeight
+			, m_pCursorIcon->GetDC()
+			, 0
+			, 0
+			, iWidth
+			, iHeight
+			, RGB(255, 0, 255));
+	}
+
+	//현재 드래그 상태일 때
+	if (m_bDragOn) {
+		PEN_TYPE ePen = PEN_TYPE::BLUE;
+
+		SelectGDI p(_dc, ePen);
+		SelectGDI b(_dc, BRUSH_TYPE::HOLLOW);
+
+		Rectangle(_dc
+			, (int)(m_vDragStart.x)
+			, (int)(m_vDragStart.y)
+			, (int)(m_vDragStart.x + m_vDragSize.x)
+			, (int)(m_vDragStart.y + m_vDragSize.y));
+	}
 }
 
 void CScene_Test::Enter()
@@ -213,12 +276,18 @@ void CScene_Test::LoadUI(const wstring& _strRelativePath, string _pageName)
 
 		pTex = CResMgr::GetInst()->LoadTexture(uiKey, uiRelativePath);
 		pBtnUI->SetCursorIconTex(pTex);
+
+		pBtnUI->SetClickedCallBack(this, (SCENE_CURSOR_FUNC)&CScene_Test::SetCursorIconTex);
 	}
 
 	fclose(pFile);
 }
 
 CScene_Test::CScene_Test(int _row, int _column)
+	: m_bTriggerCursor(false)
+	, m_pCursorIcon(nullptr)
+	, m_vDragStart(Vec2(0.f,0.f))
+	, m_bDragOn(false)
 {
 	m_vMap.resize(_row);
 	for (int i = 0; i < _row; i++) {

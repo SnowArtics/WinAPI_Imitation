@@ -50,26 +50,7 @@ void CBtnUI::render(HDC _dc)
 		, iHeight
 		, RGB(255, 0, 255));
 
-	if (m_bTriggerCursor) {
-		iWidth = m_pCursorIcon->Width();
-		iHeight = m_pCursorIcon->Height();
 
-		assert(m_pCursorIcon);
-
-		Vec2 mousePos = MOUSE_POS;
-
-		TransparentBlt(_dc
-			, (int)mousePos.x
-			, (int)mousePos.y
-			, iWidth
-			, iHeight
-			, m_pCursorIcon->GetDC()
-			, 0
-			, 0
-			, iWidth
-			, iHeight
-			, RGB(255, 0, 255));
-	}
 }
 
 void CBtnUI::MouseOn()
@@ -99,7 +80,9 @@ void CBtnUI::MouseLbtnClicked()
 	//	m_pSpawnFunc(m_param1, m_param2, m_param3);
 	//}
 
-	m_bTriggerCursor = true;
+	if (m_pSceneInst && m_pSceneCursorIcon) {
+		(m_pSceneInst->*m_pSceneCursorIcon)(m_pCursorIcon);
+	}
 }
 
 void CBtnUI::MouseRbtnDown()
@@ -116,20 +99,22 @@ void CBtnUI::MouseRbtnClicked()
 
 void CBtnUI::SetClickedCallBack(CScene* _pScene, SCENE_MEMFUNC _pSceneFunc)
 {
+	//m_pSceneInst = _pScene;
+	//m_pSceneFunc = _pSceneFunc;
+}
+
+void CBtnUI::SetClickedCallBack(CScene* _pScene, SCENE_CURSOR_FUNC _pSceneFunc)
+{
 	m_pSceneInst = _pScene;
-	m_pSceneFunc = _pSceneFunc;
+	m_pSceneCursorIcon = _pSceneFunc;
 }
 
 
 CBtnUI::CBtnUI()
 	: CUI(false)
-	, m_pSpawnFunc(nullptr)
-	, m_param1(0)
-	, m_param2(0)
-	, m_pSceneFunc(nullptr)
 	, m_pSceneInst(nullptr)
 	, m_pCursorIcon(nullptr)
-	, m_bTriggerCursor(false)
+	, m_pSceneCursorIcon(nullptr)
 {
 }
 

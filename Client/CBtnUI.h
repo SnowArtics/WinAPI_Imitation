@@ -10,9 +10,7 @@
 typedef void(*BTN_FUNC) (DWORD_PTR, DWORD_PTR);
 typedef void(CScene::*SCENE_MEMFUNC)(void);
 typedef void(CObject::*OBJECT_MEMFUNC)(void);
-
-//몬스터 생성 부분
-typedef void(*SPAWN_CREATURE)(DWORD_PTR, DWORD_PTR, DWORD_PTR);
+typedef void(CScene::*SCENE_CURSOR_FUNC)(CTexture*);
 
 class CBtnUI :
     public CUI
@@ -22,18 +20,16 @@ private:/*
     DWORD_PTR   m_param1;
     DWORD_PTR   m_param2;*/
 
-    //Scene 함수포인터를 사용하기 위한 준비
-    SCENE_MEMFUNC   m_pSceneFunc;
-    CScene*    m_pSceneInst;
+    ////Scene 함수포인터를 사용하기 위한 준비
+    //SCENE_MEMFUNC   m_pSceneFunc;
+    //CScene*    m_pSceneInst;
 
-    SPAWN_CREATURE  m_pSpawnFunc;
-    DWORD_PTR       m_param1;
-    DWORD_PTR       m_param2;
-    DWORD_PTR       m_param3;
+    //마우스 커서 아이콘의 상태를 가지고 있을 텍스트 변수
+    CTexture* m_pCursorIcon;
 
-    //버튼을 클릭시 마우스 커서를 따라다니는 텍스쳐를 저장할 텍스쳐
-    CTexture*               m_pCursorIcon;
-    bool                        m_bTriggerCursor;
+    //SceneCursorIcon을 조종하기 위한 함수포인터를 사용할 준비
+    CScene*             m_pSceneInst;
+    SCENE_CURSOR_FUNC   m_pSceneCursorIcon;
 
 public:
     virtual void update();
@@ -49,10 +45,10 @@ public:
     virtual void MouseRbtnDown();
     virtual void MouseRbtnUp();
     virtual void MouseRbtnClicked();
-    
-public:
-    void SetCursorIconTex(CTexture* _pTex) { m_pCursorIcon = _pTex; }
 
+    void SetCursorIconTex(CTexture* _pTex) { m_pCursorIcon = _pTex; }
+    
+public:   
     //void SetClickedCallBack(BTN_FUNC _pFunc, DWORD_PTR _param1, DWORD_PTR _param2) 
     //{ 
     //    m_pFunc = _pFunc;
@@ -62,13 +58,7 @@ public:
 
     void SetClickedCallBack(CScene* _pScene, SCENE_MEMFUNC _pSceneFunc);
 
-    void SetClickedCallBack(SPAWN_CREATURE _pFunc, DWORD_PTR _param1, DWORD_PTR _param2, DWORD_PTR _param3) {
-        m_pSpawnFunc = _pFunc;
-        m_param1 = _param1;
-        m_param2 = _param2;
-        m_param3 = _param3;
-    }
-
+    void SetClickedCallBack(CScene* _pScene, SCENE_CURSOR_FUNC _pSceneFunc);
 
     CLONE(CBtnUI);
 
