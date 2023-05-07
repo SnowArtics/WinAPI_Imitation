@@ -140,6 +140,9 @@ void CCore::CreateBrushPen()
 
 	//blue pen
 	m_arrPen[(UINT)PEN_TYPE::BLUE] = CreatePen(PS_SOLID, 1, RGB(0, 0, 255));
+
+	//sky pen
+	m_arrPen[(UINT)PEN_TYPE::SKY] = CreatePen(PS_SOLID, 1, RGB(80, 188, 223));
 }
 
 void CCore::DockMenu()

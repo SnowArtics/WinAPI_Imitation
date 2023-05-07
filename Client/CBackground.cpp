@@ -4,6 +4,7 @@
 
 #include "CResMgr.h"
 
+#include "CObject.h"
 #include "CTexture.h"
 #include "CCamera.h"
 #include "CScene.h"
@@ -23,6 +24,7 @@ void CBackground::start()
 
 void CBackground::update()
 {
+	MouseOnCheck();
 }
 
 void CBackground::render(HDC _dc)
@@ -40,8 +42,8 @@ void CBackground::render(HDC _dc)
 	Vec2 vRenderPos = CCamera::GetInst()->GetRenderPos(GetPos());
 
 	TransparentBlt(_dc
-		, (int)vRenderPos.x
-		, (int)vRenderPos.y
+		, (int)(vRenderPos.x-100.f)
+		, (int)(vRenderPos.y-100.f)
 		, iWidth//(int)(vScale.x)
 		, iHeight//(int)(vScale.y)
 		, m_pBackgroundTex->GetDC()
@@ -50,6 +52,8 @@ void CBackground::render(HDC _dc)
 		, iWidth//(int)(vScale.x)
 		, iHeight//(int)(vScale.y)
 		, RGB(255, 255, 255));
+
+	ViewScale(_dc);
 
 }
 
@@ -64,6 +68,8 @@ CBackground::CBackground(vector<char> _BridgeDirection, CScene* _Scene)
 
 CBackground::CBackground(const CBackground& _origin)
 	: CObject(_origin)
+	, m_pBackgroundTex(nullptr)
+	, m_pScene(nullptr)
 {
 }
 

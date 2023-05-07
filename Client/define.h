@@ -84,6 +84,7 @@ enum class PEN_TYPE {
 	RED,
 	GREEN,
 	BLUE,
+	SKY,
 	END
 
 };

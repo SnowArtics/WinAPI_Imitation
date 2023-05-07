@@ -24,6 +24,10 @@ private:
 
 	bool	m_bAlive;//false면 죽은 상태
 
+	bool            m_bMouseOn;     //UI 위에 마우스가 있는지
+	bool            m_bLbtnDown;    //UI에 왼쪽 버튼이 눌린적이 있는지
+	bool            m_bRbtnDown;    //UI에 오른쪽 버튼이 눌린적이 있는지
+
 public:
 	void SetPos(Vec2 _vPos) { m_vPos = _vPos; }
 	void SetScale(Vec2 _vScale) { m_vScale = _vScale; }
@@ -49,6 +53,8 @@ public:
 	virtual void OnCollisionEnter(CCollider* _pOther) {}
 	virtual void OnCollisionExit(CCollider* _pOther) {}
 
+	void ViewScale(HDC _dc);//오브젝트의 크기를 보여주는 함수 Render에서 호출해주기
+
 private:
 	void SetDead() { m_bAlive = false; }
 
@@ -59,6 +65,25 @@ public:
 	virtual void render(HDC _dc);
 
 	void component_render(HDC _dc);
+
+//마우스 입력 관련 함수들
+public:
+	bool IsMouseOn() { return m_bMouseOn; }
+	bool IsLbtnDown() { return m_bLbtnDown; }
+	bool IsRbtnDown() { return m_bRbtnDown; }
+
+public:
+	void MouseOnCheck();
+
+	virtual void MouseOn();
+
+	virtual void MouseLbtnDown();
+	virtual void MouseLbtnUp();
+	virtual void MouseLbtnClicked();
+
+	virtual void MouseRbtnDown();
+	virtual void MouseRbtnUp();
+	virtual void MouseRbtnClicked();
 
 	//자기 자신의 복제버전을 되돌려 준다.
 	virtual CObject* Clone() =0 ;
