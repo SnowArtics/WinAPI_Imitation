@@ -1,7 +1,10 @@
 #include "pch.h"
 #include "CBtnUI.h"
 
+#include "CResMgr.h"
 #include "CTexture.h"
+
+#include "CKeyMgr.h"
 
 void CBtnUI::update()
 {
@@ -46,6 +49,8 @@ void CBtnUI::render(HDC _dc)
 		, iWidth
 		, iHeight
 		, RGB(255, 0, 255));
+
+
 }
 
 void CBtnUI::MouseOn()
@@ -66,13 +71,17 @@ void CBtnUI::MouseLbtnClicked()
 	//	m_pFunc(m_param1, m_param2);
 	//}
 
-	if (m_pSceneInst && m_pSceneFunc) {
-		//((*m_pSceneInst).*m_pSceneFunc)();
-		(m_pSceneInst->*m_pSceneFunc)();
-	}
+	//if (m_pSceneInst && m_pSceneFunc) {
+	//	//((*m_pSceneInst).*m_pSceneFunc)();
+	//	(m_pSceneInst->*m_pSceneFunc)();
+	//}
 
-	if (nullptr != m_pSpawnFunc) {
-		m_pSpawnFunc(m_param1, m_param2, m_param3);
+	//if (nullptr != m_pSpawnFunc) {
+	//	m_pSpawnFunc(m_param1, m_param2, m_param3);
+	//}
+
+	if (m_pSceneInst && m_pSceneCursorIcon) {
+		(m_pSceneInst->*m_pSceneCursorIcon)(m_pCursorIcon);
 	}
 }
 
@@ -90,18 +99,22 @@ void CBtnUI::MouseRbtnClicked()
 
 void CBtnUI::SetClickedCallBack(CScene* _pScene, SCENE_MEMFUNC _pSceneFunc)
 {
+	//m_pSceneInst = _pScene;
+	//m_pSceneFunc = _pSceneFunc;
+}
+
+void CBtnUI::SetClickedCallBack(CScene* _pScene, SCENE_CURSOR_FUNC _pSceneFunc)
+{
 	m_pSceneInst = _pScene;
-	m_pSceneFunc = _pSceneFunc;
+	m_pSceneCursorIcon = _pSceneFunc;
 }
 
 
 CBtnUI::CBtnUI()
 	: CUI(false)
-	, m_pSpawnFunc(nullptr)
-	, m_param1(0)
-	, m_param2(0)
-	, m_pSceneFunc(nullptr)
 	, m_pSceneInst(nullptr)
+	, m_pCursorIcon(nullptr)
+	, m_pSceneCursorIcon(nullptr)
 {
 }
 
