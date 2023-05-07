@@ -1,7 +1,10 @@
 #include "pch.h"
 #include "CBtnUI.h"
 
+#include "CResMgr.h"
 #include "CTexture.h"
+
+#include "CKeyMgr.h"
 
 void CBtnUI::update()
 {
@@ -46,6 +49,27 @@ void CBtnUI::render(HDC _dc)
 		, iWidth
 		, iHeight
 		, RGB(255, 0, 255));
+
+	if (m_bTriggerCursor) {
+		iWidth = m_pCursorIcon->Width();
+		iHeight = m_pCursorIcon->Height();
+
+		assert(m_pCursorIcon);
+
+		Vec2 mousePos = MOUSE_POS;
+
+		TransparentBlt(_dc
+			, (int)mousePos.x
+			, (int)mousePos.y
+			, iWidth
+			, iHeight
+			, m_pCursorIcon->GetDC()
+			, 0
+			, 0
+			, iWidth
+			, iHeight
+			, RGB(255, 0, 255));
+	}
 }
 
 void CBtnUI::MouseOn()
@@ -66,14 +90,16 @@ void CBtnUI::MouseLbtnClicked()
 	//	m_pFunc(m_param1, m_param2);
 	//}
 
-	if (m_pSceneInst && m_pSceneFunc) {
-		//((*m_pSceneInst).*m_pSceneFunc)();
-		(m_pSceneInst->*m_pSceneFunc)();
-	}
+	//if (m_pSceneInst && m_pSceneFunc) {
+	//	//((*m_pSceneInst).*m_pSceneFunc)();
+	//	(m_pSceneInst->*m_pSceneFunc)();
+	//}
 
-	if (nullptr != m_pSpawnFunc) {
-		m_pSpawnFunc(m_param1, m_param2, m_param3);
-	}
+	//if (nullptr != m_pSpawnFunc) {
+	//	m_pSpawnFunc(m_param1, m_param2, m_param3);
+	//}
+
+	m_bTriggerCursor = true;
 }
 
 void CBtnUI::MouseRbtnDown()
@@ -102,6 +128,8 @@ CBtnUI::CBtnUI()
 	, m_param2(0)
 	, m_pSceneFunc(nullptr)
 	, m_pSceneInst(nullptr)
+	, m_pCursorIcon(nullptr)
+	, m_bTriggerCursor(false)
 {
 }
 

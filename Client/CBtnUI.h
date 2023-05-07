@@ -4,6 +4,8 @@
 #include "CScene.h"
 #include "CObject.h"
 
+#include "CTexture.h"
+
 //전역함수 호출 시
 typedef void(*BTN_FUNC) (DWORD_PTR, DWORD_PTR);
 typedef void(CScene::*SCENE_MEMFUNC)(void);
@@ -29,6 +31,10 @@ private:/*
     DWORD_PTR       m_param2;
     DWORD_PTR       m_param3;
 
+    //버튼을 클릭시 마우스 커서를 따라다니는 텍스쳐를 저장할 텍스쳐
+    CTexture*               m_pCursorIcon;
+    bool                        m_bTriggerCursor;
+
 public:
     virtual void update();
     virtual void finalupdate();
@@ -43,6 +49,9 @@ public:
     virtual void MouseRbtnDown();
     virtual void MouseRbtnUp();
     virtual void MouseRbtnClicked();
+    
+public:
+    void SetCursorIconTex(CTexture* _pTex) { m_pCursorIcon = _pTex; }
 
     //void SetClickedCallBack(BTN_FUNC _pFunc, DWORD_PTR _param1, DWORD_PTR _param2) 
     //{ 

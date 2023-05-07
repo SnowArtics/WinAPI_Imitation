@@ -137,6 +137,7 @@ void CScene_Test::LoadUI(const wstring& _strRelativePath, string _pageName)
 		uiRelativePath.assign(str.begin(), str.end());
 
 		CPanelUI* pPanelUI = new CPanelUI;
+		pPanelUI->SetName(uiKey);
 		pPanelUI->SetScale(Vec2(85.f, 35.f));
 		pPanelUI->SetPos(Vec2(20.f, 35.f*i+20.f));
 		//버튼 UI에 이미지 넣어주기
@@ -197,6 +198,21 @@ void CScene_Test::LoadUI(const wstring& _strRelativePath, string _pageName)
 		//여기에 버튼 클릭시 행동 넣어주기
 		//
 		AddObject(pBtnUI, GROUP_TYPE::UI);
+
+		//마우스 가이드 해줄 아이콘 이미지 로드
+		FScanf(szBuff, pFile);
+
+		str = szBuff;
+		//UI 키값 생성해주기
+		prevUiKey = str.substr(10, str.size() - 10 - 5);
+		uiKey.assign(prevUiKey.begin(), prevUiKey.end());
+
+		//UI 경로값 생성해주기
+		str = str.substr(0, str.size() - 1);
+		uiRelativePath.assign(str.begin(), str.end());
+
+		pTex = CResMgr::GetInst()->LoadTexture(uiKey, uiRelativePath);
+		pBtnUI->SetCursorIconTex(pTex);
 	}
 
 	fclose(pFile);
