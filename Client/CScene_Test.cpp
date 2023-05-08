@@ -31,12 +31,12 @@ void CScene_Test::update()
 	}
 	//마우스 왼쪽 버튼을 계속 누르고 있어야 함.
 	if (m_bDragOn && KEY_HOLD(KEY::LBTN)) {
-		m_bDragOn = false;
+		Vec2 _vPos = MOUSE_POS;
+		m_vDragSize = m_vDragStart - _vPos;
+		m_bDragOn = true;
 	}
 	//왼쪽 버튼을 때면 드래그 작동이 끝나고, _vPos 
 	if (KEY_AWAY(KEY::LBTN)&&m_bDragOn) {
-		Vec2 _vPos = MOUSE_POS;
-		m_vDragSize = m_vDragStart - _vPos;
 		m_bDragOn = false;
 	}
 }
@@ -73,7 +73,7 @@ void CScene_Test::render(HDC _dc)
 
 	//현재 드래그 상태일 때
 	if (m_bDragOn) {
-		PEN_TYPE ePen = PEN_TYPE::BLUE;
+		PEN_TYPE ePen = PEN_TYPE::SKY;
 
 		SelectGDI p(_dc, ePen);
 		SelectGDI b(_dc, BRUSH_TYPE::HOLLOW);
@@ -81,8 +81,8 @@ void CScene_Test::render(HDC _dc)
 		Rectangle(_dc
 			, (int)(m_vDragStart.x)
 			, (int)(m_vDragStart.y)
-			, (int)(m_vDragStart.x + m_vDragSize.x)
-			, (int)(m_vDragStart.y + m_vDragSize.y));
+			, (int)(m_vDragStart.x - m_vDragSize.x)
+			, (int)(m_vDragStart.y - m_vDragSize.y));
 	}
 }
 
@@ -289,7 +289,11 @@ CScene_Test::CScene_Test(int _row, int _column)
 	, m_vDragStart(Vec2(0.f,0.f))
 	, m_bDragOn(false)
 {
+	//m_vMap의 크기를 초기화
 	m_vMap.resize(_row);
+	for (int i = 0; i < _row; i++) {
+		m_vMap[i].resize(_column);
+	}
 	for (int i = 0; i < _row; i++) {
 		for (int j = 0; j < _column; j++) {
 			vector<char> bridgeDirection = makeBridgeDirection(i, j,_row-1);
@@ -298,9 +302,9 @@ CScene_Test::CScene_Test(int _row, int _column)
 			pBackground->SetName(name);
 			//pBackground->SetPos(Vec2(j * 2045, i * 2048));
 			pBackground->SetPos(Vec2(j* 1190, i* 890));
-			pBackground->SetScale(Vec2(600.f, 600.f));
+			pBackground->SetScale(Vec2(1050.f, 800.f));
 			AddObject(pBackground, GROUP_TYPE::BACKGROUND);
-			m_vMap[i].push_back(pBackground);
+			m_vMap[i][j] = pBackground;
 		}
 	}
 

@@ -6,6 +6,9 @@
 #include "CRigidBody.h"
 #include "CGravity.h"
 
+#include "CKeyMgr.h"
+#include "SelectGDI.h"
+
 void CObject::CreateCollider()
 {
 	m_pCollider = new CCollider;
@@ -28,6 +31,27 @@ void CObject::CreateGravity()
 {
 	m_pGravity = new CGravity;
 	m_pGravity->m_pOwner = this;
+}
+
+void CObject::ViewScale(HDC _dc)
+{
+	//background의 크기를 나타내는 부분
+	PEN_TYPE ePen = PEN_TYPE::BLUE;
+
+	SelectGDI p(_dc, ePen);
+	SelectGDI b(_dc, BRUSH_TYPE::HOLLOW);
+
+	Vec2 cPos = GetPos();
+	Vec2 vScale = GetScale();
+
+	Vec2 vPos = CCamera::GetInst()->GetRenderPos(GetPos());
+	//Vec2 vScale = CCamera::GetInst()->GetRenderPos(GetScale());
+
+	Rectangle(_dc
+		, (int)(vPos.x)
+		, (int)(vPos.y)
+		, (int)(vPos.x + vScale.x)
+		, (int)(vPos.y + vScale.y));
 }
 
 void CObject::finalupdate()
@@ -65,6 +89,48 @@ void CObject::component_render(HDC _dc)
 	}
 }
 
+void CObject::MouseOnCheck()
+{
+	Vec2 vMousePos = MOUSE_POS;
+	Vec2 vScale = GetScale();
+
+	if (m_vPos.x <= vMousePos.x && vMousePos.x <= m_vPos.x + vScale.x
+		&& m_vPos.y <= vMousePos.y && vMousePos.y <= m_vPos.y + vScale.y) {
+		m_bMouseOn = true;
+	}
+	else {
+		m_bMouseOn = false;
+	}
+}
+
+void CObject::MouseOn()
+{
+}
+
+void CObject::MouseLbtnDown()
+{
+}
+
+void CObject::MouseLbtnUp()
+{
+}
+
+void CObject::MouseLbtnClicked()
+{
+}
+
+void CObject::MouseRbtnDown()
+{
+}
+
+void CObject::MouseRbtnUp()
+{
+}
+
+void CObject::MouseRbtnClicked()
+{
+}
+
 
 CObject::CObject()
 	:m_vPos{}
@@ -74,6 +140,9 @@ CObject::CObject()
 	, m_pRigidBody(nullptr)
 	, m_pGravity(nullptr)
 	, m_bAlive(true)
+	, m_bMouseOn(false)
+	, m_bLbtnDown(false)
+	, m_bRbtnDown(false)
 {
 }
 
@@ -86,6 +155,9 @@ CObject::CObject(const CObject& _origin)
 	, m_pRigidBody(nullptr)
 	, m_pGravity(nullptr)
 	, m_bAlive(true)
+	, m_bLbtnDown(false)
+	, m_bRbtnDown(false)
+	, m_bMouseOn(false)
 {
 	if (_origin.m_pCollider) {
 		m_pCollider = new CCollider(*_origin.m_pCollider);

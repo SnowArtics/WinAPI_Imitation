@@ -8,6 +8,8 @@
 
 void CUI::update()
 {
+	MouseOnCheck();
+
 	update_child();
 }
 
