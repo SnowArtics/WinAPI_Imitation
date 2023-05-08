@@ -8,6 +8,7 @@
 
 #include "CKeyMgr.h"
 #include "SelectGDI.h"
+#include "CCamera.h"
 
 void CObject::CreateCollider()
 {
@@ -91,11 +92,13 @@ void CObject::component_render(HDC _dc)
 
 void CObject::MouseOnCheck()
 {
+	Vec2 vPos = CCamera::GetInst()->GetRenderPos(m_vPos);
 	Vec2 vMousePos = MOUSE_POS;
+	//Vec2 vMousePos = CCamera::GetInst()->GetRenderPos(MOUSE_POS);
 	Vec2 vScale = GetScale();
 
-	if (m_vPos.x <= vMousePos.x && vMousePos.x <= m_vPos.x + vScale.x
-		&& m_vPos.y <= vMousePos.y && vMousePos.y <= m_vPos.y + vScale.y) {
+	if (vPos.x <= vMousePos.x && vMousePos.x <= vPos.x + vScale.x
+		&& vPos.y <= vMousePos.y && vMousePos.y <= vPos.y + vScale.y) {
 		m_bMouseOn = true;
 	}
 	else {
