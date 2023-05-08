@@ -24,6 +24,17 @@ private:
     virtual void update();
     virtual void render(HDC _dc);
 
+public:
+    virtual void MouseOn();
+
+    virtual void MouseLbtnDown();
+    virtual void MouseLbtnUp();
+    virtual void MouseLbtnClicked();
+
+    virtual void MouseRbtnDown();
+    virtual void MouseRbtnUp();
+    virtual void MouseRbtnClicked();
+
     CLONE(CBackground);
 
 public:

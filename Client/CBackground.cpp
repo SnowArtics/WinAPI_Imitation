@@ -57,6 +57,34 @@ void CBackground::render(HDC _dc)
 
 }
 
+void CBackground::MouseOn()
+{
+}
+
+void CBackground::MouseLbtnDown()
+{
+}
+
+void CBackground::MouseLbtnUp()
+{
+}
+
+void CBackground::MouseLbtnClicked()
+{
+}
+
+void CBackground::MouseRbtnDown()
+{
+}
+
+void CBackground::MouseRbtnUp()
+{
+}
+
+void CBackground::MouseRbtnClicked()
+{
+}
+
 CBackground::CBackground(vector<char> _BridgeDirection, CScene* _Scene)
 	: m_pBackgroundTex(nullptr)
 	, m_pScene(nullptr)

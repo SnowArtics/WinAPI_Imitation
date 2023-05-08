@@ -10,6 +10,8 @@
 #include "SelectGDI.h"
 #include "CCamera.h"
 
+#include "CCore.h"
+
 void CObject::CreateCollider()
 {
 	m_pCollider = new CCollider;
@@ -70,12 +72,22 @@ void CObject::finalupdate()
 void CObject::render(HDC _dc)
 {
 	Vec2 vRenderPos = CCamera::GetInst()->GetRenderPos(m_vPos);
-	Rectangle(_dc, 
-		(int)(vRenderPos.x - m_vScale.x / 2.f),
-		(int)(vRenderPos.y - m_vScale.y / 2.f),
-		(int)(vRenderPos.x + m_vScale.x / 2.f),
-		(int)(vRenderPos.y + m_vScale.y / 2.f));
 
+	if (m_bLbtnDown) {
+		SelectGDI select(_dc, PEN_TYPE::GREEN);
+
+		Rectangle(_dc,
+			(int)(vRenderPos.x - m_vScale.x / 2.f),
+			(int)(vRenderPos.y - m_vScale.y / 2.f),
+			(int)(vRenderPos.x + m_vScale.x / 2.f),
+			(int)(vRenderPos.y + m_vScale.y / 2.f));
+	}else{
+		Rectangle(_dc,
+			(int)(vRenderPos.x - m_vScale.x / 2.f),
+			(int)(vRenderPos.y - m_vScale.y / 2.f),
+			(int)(vRenderPos.x + m_vScale.x / 2.f),
+			(int)(vRenderPos.y + m_vScale.y / 2.f));
+	}
 	component_render(_dc);
 }
 
@@ -96,9 +108,13 @@ void CObject::MouseOnCheck()
 	Vec2 vMousePos = MOUSE_POS;
 	//Vec2 vMousePos = CCamera::GetInst()->GetRenderPos(MOUSE_POS);
 	Vec2 vScale = GetScale();
-
+	
+	Vec2 vResolution = CCore::GetInst()->GetResolution();
+		
 	if (vPos.x <= vMousePos.x && vMousePos.x <= vPos.x + vScale.x
-		&& vPos.y <= vMousePos.y && vMousePos.y <= vPos.y + vScale.y) {
+		&& vPos.y <= vMousePos.y && vMousePos.y <= vPos.y + vScale.y//MousePos가 오브젝트의 범위 안에 있을 때,
+		&& vMousePos.x >= 0 && vMousePos.x <= vResolution.x 
+		&& vMousePos.y >=0 && vMousePos.y <=vResolution.y ){//vMpisePos가 화면 해상도 안에 있을 때
 		m_bMouseOn = true;
 	}
 	else {

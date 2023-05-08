@@ -94,5 +94,6 @@ public:
 	virtual ~CObject(); 
 
 	friend class CEventMgr;
+	friend class CObjectMgr;
 };
 
