@@ -19,6 +19,8 @@
 
 #include "CSound.h"
 
+#include "CObjectMgr.h"
+
 //CCore* CCore::g_pInst = nullptr;//데이터 영역에 생성되고 최초 호출 시 한번만 초기화됨
 
 
@@ -86,6 +88,9 @@ void CCore::progress()
 
 	//UI 이벤트 체크
 	CUIMgr::GetInst()->update();
+
+	//Object 이벤트 체크
+	CObjectMgr::GetInst()->update();
 
 
 	//그리기

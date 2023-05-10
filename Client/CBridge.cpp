@@ -17,25 +17,25 @@ void CBridge::start()
 	{
 	case 'E':
 	{
-		SetPos(GetPos() + Vec2(1090.f, 395.f));
+		SetPos(GetPos() + Vec2(1090.f - 100.f, 395.f - 100.f));
 	}
 	break;
 
 	case 'W':
 	{
-		SetPos(GetPos() + Vec2(10.f, 395.f));
+		SetPos(GetPos() + Vec2(10.f - 100.f, 395.f - 100.f));
 	}
 	break;
 
 	case 'S':
 	{
-		SetPos(GetPos()+Vec2(500.f, 805.f));
+		SetPos(GetPos()+Vec2(500.f - 100.f, 805.f - 100.f));
 	}
 	break;
 
 	case'N':
 	{
-		SetPos(GetPos()+Vec2(500.f, 30.f));
+		SetPos(GetPos()+Vec2(500.f - 100.f, 30.f - 100.f));
 	}
 	break;
 	}
@@ -60,8 +60,8 @@ void CBridge::render(HDC _dc)
 	Vec2 vRenderPos = CCamera::GetInst()->GetRenderPos(GetPos());
 
 	TransparentBlt(_dc
-		,(int)vRenderPos.x
-		, (int)vRenderPos.y
+		,(int)(vRenderPos.x)
+		, (int)(vRenderPos.y)
 		, iWidth//(int)(vScale.x)
 		, iHeight//(int)(vScale.y)
 		, m_pBridgeTex->GetDC()
@@ -70,6 +70,8 @@ void CBridge::render(HDC _dc)
 		, iWidth//(int)(vScale.x)
 		, iHeight//(int)(vScale.y)
 		, RGB(255, 255, 255));
+
+	ViewScale(_dc);
 }
 
 

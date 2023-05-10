@@ -6,6 +6,75 @@
 
 #include "CKeyMgr.h"
 
+#include "CMonFactory.h"
+
+void CBtnUI::start()
+{
+	if (m_sBtnName == L"button_worker") {
+		m_eMonType = MON_TYPE::WORKER;
+		m_eMonName = MON_NAME::WORKER;
+	}else if (m_sBtnName == L"button_guard") {
+		m_eMonType = MON_TYPE::MELEE;
+		m_eMonName = MON_NAME::GUARD;
+	}
+	else if (m_sBtnName == L"button_archer") {
+		m_eMonType = MON_TYPE::RANGE;
+		m_eMonName = MON_NAME::ARCHER;
+	}
+	else if (m_sBtnName == L"button_axe_thrower") {
+		m_eMonType = MON_TYPE::RANGE;
+		m_eMonName = MON_NAME::AXE_TRHOWER;
+	}
+	else if (m_sBtnName == L"button_hammerman") {
+		m_eMonType = MON_TYPE::MELEE;
+		m_eMonName = MON_NAME::HAMMERMAN;
+	}
+	else if (m_sBtnName == L"button_knight") {
+		m_eMonType = MON_TYPE::MELEE;
+		m_eMonName = MON_NAME::KNIGHT;
+	}
+	else if (m_sBtnName == L"button_healer") {
+		m_eMonType = MON_TYPE::RANGE;
+		m_eMonName = MON_NAME::HEALER;
+	}
+	else if (m_sBtnName == L"button_farm") {
+		m_eMonType = MON_TYPE::BUILDING;
+		m_eMonName = MON_NAME::FARM;
+	}
+	else if (m_sBtnName == L"button_wall") {
+		m_eMonType = MON_TYPE::BUILDING;
+		m_eMonName = MON_NAME::WALL;
+	}
+	else if (m_sBtnName == L"button_wizard") {
+		m_eMonType = MON_TYPE::RANGE;
+		m_eMonName = MON_NAME::WIZARD;
+	}
+	else if (m_sBtnName == L"button_necromancer") {
+		m_eMonType = MON_TYPE::RANGE;
+		m_eMonName = MON_NAME::NECROMANCER;
+	}
+	else if (m_sBtnName == L"button_dragon") {
+		m_eMonType = MON_TYPE::MELEE;
+		m_eMonName = MON_NAME::RED_DRAGON;
+	}
+	else if (m_sBtnName == L"button_catapult") {
+		m_eMonType = MON_TYPE::RANGE;
+		m_eMonName = MON_NAME::CATAPULT;
+	}
+	else if (m_sBtnName == L"button_hunter") {
+		m_eMonType = MON_TYPE::RANGE;
+		m_eMonName = MON_NAME::ICE_HUNTER;
+	}
+	else if (m_sBtnName == L"button_horse_archer") {
+		m_eMonType = MON_TYPE::RANGE;
+		m_eMonName = MON_NAME::HORSE_ARCHER;
+	}
+	else if (m_sBtnName == L"button_storehouse") {
+		m_eMonType = MON_TYPE::BUILDING;
+		m_eMonName = MON_NAME::STOREHOUSE;
+	}
+}
+
 void CBtnUI::update()
 {
 	CUI::update();
@@ -81,7 +150,7 @@ void CBtnUI::MouseLbtnClicked()
 	//}
 
 	if (m_pSceneInst && m_pSceneCursorIcon) {
-		(m_pSceneInst->*m_pSceneCursorIcon)(m_pCursorIcon);
+		(m_pSceneInst->*m_pSceneCursorIcon)(m_pCursorIcon, m_eMonType, m_eMonName);
 	}
 }
 
@@ -112,6 +181,7 @@ void CBtnUI::SetClickedCallBack(CScene* _pScene, SCENE_CURSOR_FUNC _pSceneFunc)
 
 CBtnUI::CBtnUI()
 	: CUI(false)
+	, m_sBtnName(L"")
 	, m_pSceneInst(nullptr)
 	, m_pCursorIcon(nullptr)
 	, m_pSceneCursorIcon(nullptr)
