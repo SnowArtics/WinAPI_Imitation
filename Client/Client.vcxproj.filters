@@ -158,6 +158,9 @@
     <Filter Include="Engine\03. Manager\ObjectMgr">
       <UniqueIdentifier>{036a96b7-9776-40ad-ab4e-6222bc6cfbef}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\04. Object\Monster\guard">
+      <UniqueIdentifier>{60348346-cac7-492e-920b-c237c7aa68d4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CCore.h">
@@ -307,6 +310,9 @@
     <ClInclude Include="CObjectMgr.h">
       <Filter>Engine\03. Manager\ObjectMgr</Filter>
     </ClInclude>
+    <ClInclude Include="CGuard.h">
+      <Filter>Engine\04. Object\Monster\guard</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CCore.cpp">
@@ -438,6 +444,9 @@
     </ClCompile>
     <ClCompile Include="CObjectMgr.cpp">
       <Filter>Engine\03. Manager\ObjectMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CGuard.cpp">
+      <Filter>Engine\04. Object\Monster\guard</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

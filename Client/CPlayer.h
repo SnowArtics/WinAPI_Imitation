@@ -2,10 +2,11 @@
 #include "CObject.h"
 
 enum class PLAYER_STATE{
-    IDLE,
+    IDLE,//할 일없는상태
     WALK,
-    ATTACK,
+    TRACE,
     JUMP,
+    ATTACK,
     DEAD,
 };
 

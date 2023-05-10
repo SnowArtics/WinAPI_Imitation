@@ -15,12 +15,19 @@
 #include "CPanelUI.h"
 #include "SelectGDI.h"
 
+#include "CMonFactory.h"
+
 void CScene_Test::update()
 {
 	CScene::update();
 
 	if (KEY_TAP(KEY::RBTN)) {
 		m_bTriggerCursor = false;
+		for (int i = 0; i < m_vMap.size(); i++) {
+			for(int j = 0; j < m_vMap.size(); j++){
+				m_vMap[i][j]->SetTriggerCursor(false);
+			}
+		}
 		m_pCursorIcon = nullptr;
 	}
 
@@ -104,6 +111,7 @@ void CScene_Test::Enter()
 void CScene_Test::Exit()
 {
 }
+
 
 vector<char> CScene_Test::makeBridgeDirection(int _row, int _column, int _size)
 {
@@ -258,6 +266,10 @@ void CScene_Test::LoadUI(const wstring& _strRelativePath, string _pageName)
 		//버튼 UI에 이미지 넣어주기
 		CTexture* pTex = CResMgr::GetInst()->LoadTexture(uiKey, uiRelativePath);
 		pBtnUI->SetTexture(pTex);
+
+		//버튼 UI의 이름 설정
+		pBtnUI->SetName(uiKey);
+
 		//여기에 버튼 클릭시 행동 넣어주기
 		//
 		AddObject(pBtnUI, GROUP_TYPE::UI);
@@ -283,6 +295,22 @@ void CScene_Test::LoadUI(const wstring& _strRelativePath, string _pageName)
 	fclose(pFile);
 }
 
+void CScene_Test::SetCursorIconTex(CTexture* _pTex, MON_TYPE _eMonType, MON_NAME _eMonName)
+{
+	m_bTriggerCursor = true;
+	m_pCursorIcon = _pTex;
+	m_eMonType = _eMonType;
+	m_eMonName = _eMonName;
+
+	for (int i = 0; i < m_vMap.size(); i++) {
+		for (int j = 0; j < m_vMap.size(); j++) {
+			m_vMap[i][j]->SetTriggerCursor(true);
+			m_vMap[i][j]->SetMonType(_eMonType);
+			m_vMap[i][j]->SetMonName(_eMonName);
+		}
+	}
+}
+
 CScene_Test::CScene_Test(int _row, int _column)
 	: m_bTriggerCursor(false)
 	, m_pCursorIcon(nullptr)
@@ -297,13 +325,13 @@ CScene_Test::CScene_Test(int _row, int _column)
 	for (int i = 0; i < _row; i++) {
 		for (int j = 0; j < _column; j++) {
 			vector<char> bridgeDirection = makeBridgeDirection(i, j,_row-1);
-			CObject* pBackground = new CBackground(bridgeDirection, this);
+			CBackground* pBackground = new CBackground(bridgeDirection, this);
 			wstring name = makeBackgroundName(i, j);
 			pBackground->SetName(name);
 			//pBackground->SetPos(Vec2(j * 2045, i * 2048));
 			pBackground->SetPos(Vec2(j* 1190, i* 890));
 			pBackground->SetScale(Vec2(1050.f, 800.f));
-			AddObject(pBackground, GROUP_TYPE::BACKGROUND);
+			AddObject((CObject*)pBackground, GROUP_TYPE::BACKGROUND);
 			m_vMap[i][j] = pBackground;
 		}
 	}

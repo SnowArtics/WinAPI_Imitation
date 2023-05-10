@@ -1,5 +1,6 @@
 #pragma once
 #include "CObject.h"
+#include "CMonFactory.h"
 
 class CBridge;
 class CScene;
@@ -12,6 +13,10 @@ private:
     map<char, CObject*>       m_mapBridge;//Bridge를 넣을 map
     CScene*                             m_pScene;//Bridge가 속해 있는 씬
 
+    bool                            m_bTriggerCursor;
+    MON_TYPE                        m_eMonType;//클릭시 생성할 몬스터의 타입
+    MON_NAME                        m_eMonName;//클릭시 생성할 몬스터의 이름
+
     vector<char>                    m_vBridgeDirection;//이 Background가 가질 Bridge의 방향
 
 public:
@@ -23,6 +28,14 @@ private:
     virtual void start();
     virtual void update();
     virtual void render(HDC _dc);
+
+public:
+    MON_TYPE GetMonType() { return m_eMonType; }
+    MON_NAME GetMonName() { return m_eMonName; }
+
+    void SetMonType(MON_TYPE _e) { m_eMonType = _e; }
+    void SetMonName(MON_NAME _e) { m_eMonName = _e; }
+    void SetTriggerCursor(bool _b) { m_bTriggerCursor = _b; }
 
 public:
     virtual void MouseOn();

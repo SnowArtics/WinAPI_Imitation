@@ -270,6 +270,10 @@ CPlayer::CPlayer()
 
 CPlayer::CPlayer(const CPlayer& _origin)
 	: CObject(_origin)
+	, m_ePrevState(PLAYER_STATE::IDLE)
+	, m_eCurState(PLAYER_STATE::IDLE)
+	, m_iDir(1)
+	, m_iPrevDir(1)
 	//, m_pTex(_origin.m_pTex)
 {
 }

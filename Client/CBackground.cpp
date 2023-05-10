@@ -9,6 +9,9 @@
 #include "CCamera.h"
 #include "CScene.h"
 
+#include "CKeyMgr.h"
+#include "CMonFactory.h"
+
 void CBackground::start()
 {
 	for (int i = 0; i < m_vBridgeDirection.size(); i++) {
@@ -71,6 +74,29 @@ void CBackground::MouseLbtnUp()
 
 void CBackground::MouseLbtnClicked()
 {
+	if (m_bTriggerCursor) {
+		Vec2 vMousePos = CCamera::GetInst()->GetRenderPos(MOUSE_POS);
+		CMonster* pMon = CMonFactory::CreateMonster(m_eMonType, m_eMonName, vMousePos);
+
+		switch (m_eMonType)
+		{
+		case MON_TYPE::NORMAL:
+			assert(true);
+			break;
+		case MON_TYPE::WORKER:
+			CreateObject((CObject*)pMon, GROUP_TYPE::P1_WORKER);
+			break;
+		case MON_TYPE::MELEE:
+			CreateObject((CObject*)pMon, GROUP_TYPE::P1_MELEE_CREATURE);
+			break;
+		case MON_TYPE::RANGE:
+			CreateObject((CObject*)pMon, GROUP_TYPE::P1_RANGE_CREATURE);
+			break;
+		case MON_TYPE::BUILDING:
+			CreateObject((CObject*)pMon, GROUP_TYPE::P1_BUILDING);
+			break;
+		}
+	}	
 }
 
 void CBackground::MouseRbtnDown()
@@ -88,6 +114,7 @@ void CBackground::MouseRbtnClicked()
 CBackground::CBackground(vector<char> _BridgeDirection, CScene* _Scene)
 	: m_pBackgroundTex(nullptr)
 	, m_pScene(nullptr)
+	, m_bTriggerCursor(false)
 {
 	m_pBackgroundTex = CResMgr::GetInst()->LoadTexture(L"Sunny_Forest", L"background\\sunny_forest\\sunny_forest.png");
 	m_vBridgeDirection = _BridgeDirection;
