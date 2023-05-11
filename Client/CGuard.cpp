@@ -7,10 +7,12 @@
 #include "CResMgr.h"
 #include "CAnimator.h"
 #include "CObject.h"
+#include "CAnimation.h"
 
 
 void CGuard::update()
 {
+	MouseOnCheck();
 	CMonster::update();
 }
 
@@ -72,7 +74,7 @@ CGuard::CGuard()
 	//GetCollider()->SetOffsetPos(Vec2(0.f, 30.f));
 	//GetCollider()->SetScale(Vec2(40.0f, 40.f));
 
-	SetScale(Vec2(80.f, 80.f));
+	SetScale(Vec2(90.f, 120.f));
 
 	CreateAnimator();
 
@@ -84,6 +86,32 @@ CGuard::CGuard()
 	GetAnimator()->CreateAnimation(L"WALK_RIGHT", pTex, Vec2(0.f, 648.f), Vec2(216.f, 216.f), Vec2(216.f, 0.f), 0.2f, 3);
 	GetAnimator()->CreateAnimation(L"ATT_LEFT", pTex, Vec2(0.f, 864.f), Vec2(216.f, 216.f), Vec2(216.f, 0.f), 0.2f, 8);
 	GetAnimator()->CreateAnimation(L"ATT_RIGHT", pTex, Vec2(0.f, 1080.f), Vec2(216.f, 216.f), Vec2(216.f, 0.f), 0.2f, 8);
+
+	//애니메이션이 실제 물체의 위치보다 조금 더 우측 하단에 그려지게 함
+	CAnimation* pAnim = GetAnimator()->FindAnimation(L"IDLE_LEFT");
+	for (UINT i = 0; i < pAnim->GetMaxFrame(); i++) {
+		pAnim->GetFrame(i).vOffset = Vec2(40.f,20.f);
+	}
+	pAnim = GetAnimator()->FindAnimation(L"IDLE_RIGHT");
+	for (UINT i = 0; i < pAnim->GetMaxFrame(); i++) {
+		pAnim->GetFrame(i).vOffset = Vec2(40.f, 20.f);
+	}
+	pAnim = GetAnimator()->FindAnimation(L"WALK_LEFT");
+	for (UINT i = 0; i < pAnim->GetMaxFrame(); i++) {
+		pAnim->GetFrame(i).vOffset = Vec2(40.f, 20.f);
+	}
+	pAnim = GetAnimator()->FindAnimation(L"WALK_RIGHT");
+	for (UINT i = 0; i < pAnim->GetMaxFrame(); i++) {
+		pAnim->GetFrame(i).vOffset = Vec2(40.f, 20.f);
+	}
+	pAnim = GetAnimator()->FindAnimation(L"ATT_LEFT");
+	for (UINT i = 0; i < pAnim->GetMaxFrame(); i++) {
+		pAnim->GetFrame(i).vOffset = Vec2(40.f, 20.f);
+	}
+	pAnim = GetAnimator()->FindAnimation(L"ATT_RIGHT");
+	for (UINT i = 0; i < pAnim->GetMaxFrame(); i++) {
+		pAnim->GetFrame(i).vOffset = Vec2(40.f, 20.f);
+	}
 
 	GetAnimator()->Play(L"IDLE_LEFT", true);
 }

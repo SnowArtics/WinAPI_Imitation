@@ -24,7 +24,8 @@ private:
     MON_STATE       m_eCurState;//몬스터의 현재 상태
     MON_STATE       m_ePrevState;//몬스터의 이전 상태
 
-    Vec2                m_vTargetPosition;
+    Vec2                m_vTargetPosition;//몬스터가 이동해야하는 위치
+    Vec2                m_vTarget;;         //몬스터가 타겟팅한 위치
     int                 m_iDir;//몬스터가 바라보는 현재 방향
     int                 m_iPrevDir;//몬스터가 바라보는 이전 방향
 
