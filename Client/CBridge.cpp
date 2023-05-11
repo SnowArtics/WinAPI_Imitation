@@ -74,6 +74,34 @@ void CBridge::render(HDC _dc)
 	ViewScale(_dc);
 }
 
+void CBridge::MouseOn()
+{
+}
+
+void CBridge::MouseLbtnDown()
+{
+}
+
+void CBridge::MouseLbtnUp()
+{
+}
+
+void CBridge::MouseLbtnClicked()
+{
+}
+
+void CBridge::MouseRbtnDown()
+{
+}
+
+void CBridge::MouseRbtnUp()
+{
+}
+
+void CBridge::MouseRbtnClicked()
+{
+}
+
 
 CBridge::CBridge(char _direction)
 	: m_pBridgeTex(nullptr)

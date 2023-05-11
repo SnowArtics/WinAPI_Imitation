@@ -20,7 +20,7 @@ void CMonster::update()
 	if(nullptr!=m_pAI)
 		m_pAI->update();
 
-	if (KEY_TAP(KEY::LBTN) || KEY_TAP(KEY::RBTN)) m_bClicked = false;
+	if (KEY_TAP(KEY::LBTN)) m_bClicked = false;
 
 	update_move();
 	update_state();
@@ -41,16 +41,18 @@ void CMonster::render(HDC _dc)
 	component_render(_dc);
 
 	Vec2 vPos = GetPos();
+	Vec2 vScale = GetScale();
 	Vec2 vRenderPos = CCamera::GetInst()->GetRenderPos(GetPos());
 
 	if (m_bClicked) {
-		SelectGDI select(_dc, PEN_TYPE::GREEN);
+		SelectGDI select1(_dc, PEN_TYPE::GREEN);
+		SelectGDI select2(_dc, BRUSH_TYPE::HOLLOW);
 
-		Rectangle(_dc,
-			(int)(vRenderPos.x - 20.f),
-			(int)(vRenderPos.y - 20.f),
-			(int)(vRenderPos.x + 20.f),
-			(int)(vRenderPos.y + 20.f));
+		Ellipse(_dc,
+			(int)(vRenderPos.x),
+			(int)(vRenderPos.y + vScale.x*0.8f+20.f),
+			(int)(vRenderPos.x + vScale.x),
+			(int)(vRenderPos.y + vScale.y+20.f));
 	}
 }
 

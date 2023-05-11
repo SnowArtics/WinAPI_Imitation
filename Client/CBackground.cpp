@@ -11,6 +11,9 @@
 
 #include "CKeyMgr.h"
 #include "CMonFactory.h"
+#include "CSceneMgr.h"
+#include "CScene.h"
+#include "CScene_Test.h"
 
 void CBackground::start()
 {
@@ -74,8 +77,10 @@ void CBackground::MouseLbtnUp()
 
 void CBackground::MouseLbtnClicked()
 {
-	if (m_bTriggerCursor) {
-		Vec2 vMousePos = CCamera::GetInst()->GetRenderPos(MOUSE_POS);
+	if (m_bTriggerCursor&& m_iOwn==1) {
+		//Vec2 vMousePos = MOUSE_POS;
+		//Vec2 vMousePos = CCamera::GetInst()->GetRenderPos(MOUSE_POS);
+		Vec2 vMousePos = CCamera::GetInst()->GetRealPos(MOUSE_POS);
 		CMonster* pMon = CMonFactory::CreateMonster(m_eMonType, m_eMonName, vMousePos);
 
 		switch (m_eMonType)
@@ -96,6 +101,9 @@ void CBackground::MouseLbtnClicked()
 			CreateObject((CObject*)pMon, GROUP_TYPE::P1_BUILDING);
 			break;
 		}
+
+		CScene_Test* pCurScene = (CScene_Test*)CSceneMgr::GetInst()->GetCurScene();
+		pCurScene->AddP1Mon((CObject*)pMon);
 	}	
 }
 
@@ -125,6 +133,7 @@ CBackground::CBackground(const CBackground& _origin)
 	: CObject(_origin)
 	, m_pBackgroundTex(nullptr)
 	, m_pScene(nullptr)
+	, m_iOwn(0)
 {
 }
 

@@ -8,6 +8,7 @@
 #include "CTraceState.h"
 
 #include "CRigidBody.h"
+#include "CCamera.h"
 
 #include "CGuard.h"
 
@@ -15,6 +16,7 @@
 CMonster* CMonFactory::CreateMonster(MON_TYPE _eType, MON_NAME _eName, Vec2 _vPos)
 {
 	CMonster* pMon = nullptr;
+	//_vPos = CCamera::GetInst()->GetRenderPos(_vPos);
 
 	switch (_eType)
 	{

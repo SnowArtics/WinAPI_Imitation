@@ -16,6 +16,7 @@
 #include "SelectGDI.h"
 
 #include "CMonFactory.h"
+#include "CMonster.h"
 
 void CScene_Test::update()
 {
@@ -43,8 +44,24 @@ void CScene_Test::update()
 		m_bDragOn = true;
 	}
 	//왼쪽 버튼을 때면 드래그 작동이 끝나고, _vPos 
-	if (KEY_AWAY(KEY::LBTN)&&m_bDragOn) {
+	//마우스는 렌더 포즈 하면 안됨
+	if (KEY_AWAY(KEY::LBTN) && m_bDragOn) {
 		m_bDragOn = false;
+		//Vec2 vDragRenderPos = CCamera::GetInst()->GetRenderPos(m_vDragStart);
+
+		//드래그 크기에서 가장 작은값을 골라줌
+		Vec2 vMinDragSize = Vec2(min(m_vDragStart.x, (m_vDragStart.x - m_vDragSize.x)), min(m_vDragStart.y, (m_vDragStart.y - m_vDragSize.y)));
+		//드래그 크기에서 가장 큰 값을 골라줌
+		Vec2 vMaxDragSize = Vec2(max(m_vDragStart.x, (m_vDragStart.x - m_vDragSize.x)), max(m_vDragStart.y, (m_vDragStart.y - m_vDragSize.y)));
+
+		for (UINT i = 0; i < m_vP1OwnMon.size(); i++) {
+			Vec2 vMonPos = m_vP1OwnMon[i]->GetPos();
+			Vec2 vMonRenderPos = CCamera::GetInst()->GetRenderPos(vMonPos);
+			if (vMonRenderPos.x >= vMinDragSize.x && vMonRenderPos.x <= vMaxDragSize.x
+				&& vMonRenderPos.y >= vMinDragSize.y && vMonRenderPos.y <= vMaxDragSize.y) {
+				((CMonster*)m_vP1OwnMon[i])->MouseLbtnClicked();
+			} 
+		}
 	}
 }
 
@@ -335,6 +352,9 @@ CScene_Test::CScene_Test(int _row, int _column)
 			m_vMap[i][j] = pBackground;
 		}
 	}
+
+	m_vP1Map.push_back(m_vMap[0][0]);
+	m_vP1Map[0]->SetBackgroundOwn(1);
 
 	LoadUI(L"ui\\ui.info", "[page1]");
 }

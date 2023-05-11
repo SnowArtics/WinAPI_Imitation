@@ -19,6 +19,9 @@ private:
 
     vector<char>                    m_vBridgeDirection;//이 Background가 가질 Bridge의 방향
 
+    int                             m_iOwn; //현재 이 맵을 지배중인 플레이어
+                                            //0은 몬스터, 1은 P1, 2는 P2, 3은 P3, 4는 p4
+
 public:
     void SetTexture(CTexture* _pTex) {
         m_pBackgroundTex = _pTex;
@@ -36,6 +39,7 @@ public:
     void SetMonType(MON_TYPE _e) { m_eMonType = _e; }
     void SetMonName(MON_NAME _e) { m_eMonName = _e; }
     void SetTriggerCursor(bool _b) { m_bTriggerCursor = _b; }
+    void SetBackgroundOwn(int _i) { m_iOwn = _i; }
 
 public:
     virtual void MouseOn();
