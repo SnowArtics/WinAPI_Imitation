@@ -27,6 +27,8 @@ using std::wstring;
 #include "define.h"
 //#endif
 
+#include <ctime>
+
 #include "struct.h"
 #include "math.h"
 #include "func.h"

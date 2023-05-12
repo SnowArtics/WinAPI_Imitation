@@ -14,6 +14,7 @@
 #include "CSceneMgr.h"
 #include "CScene.h"
 #include "CScene_Test.h"
+#include "CMonster.h"
 
 void CBackground::start()
 {
@@ -117,6 +118,17 @@ void CBackground::MouseRbtnUp()
 
 void CBackground::MouseRbtnClicked()
 {
+	//Vec2 vMousePos = MOUSE_POS;
+	Vec2 vMousePos = CCamera::GetInst()->GetRealPos(MOUSE_POS);
+	
+	CScene* pCurScene = CSceneMgr::GetInst()->GetCurScene();
+	vector<CObject*> vP1Mon = ((CScene_Test*)pCurScene)->GetP1Mon();
+
+	for (UINT i = 0; i < vP1Mon.size(); i++) {
+		if (((CMonster*)vP1Mon[i])->GetClicked()) {
+			((CMonster*)vP1Mon[i])->SetTargetPosition(Vec2(vMousePos.x+(i*30.f), vMousePos.y + (i * 30.f)));
+		}
+	}
 }
 
 CBackground::CBackground(vector<char> _BridgeDirection, CScene* _Scene)
