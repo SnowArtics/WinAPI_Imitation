@@ -28,12 +28,12 @@ void CAttState::update()
 
 	if (vMonDir.x < 0.f) {
 		CMonster* _pMonster = GetMonster();
-		_pMonster->SetMonDir(1);
+		_pMonster->SetMonDir(-1);
 		_pMonster->SetMonCurState(MON_STATE::ATT);
 	}
 	else {
 		CMonster* _pMonster = GetMonster();
-		_pMonster->SetMonDir(-1);
+		_pMonster->SetMonDir(1);
 		_pMonster->SetMonCurState(MON_STATE::ATT);
 	}
 }

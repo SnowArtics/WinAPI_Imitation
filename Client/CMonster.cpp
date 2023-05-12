@@ -55,17 +55,21 @@ void CMonster::update()
 
 void CMonster::OnCollision(CCollider* _pOther)
 {
-	CObject* pOtherObj = _pOther->GetObj();
 
-	if (pOtherObj->GetName() == m_vTarget->GetName()) {
-		if (m_tInfo.fTime >= m_tInfo.fAttSpeed) {
-			((CMonster*)pOtherObj)->DecreaseMonHP(m_tInfo.fAtt);
-			if (((CMonster*)pOtherObj)->GetMonHP() <= 0.f) {
-				m_vTarget = nullptr;
+	if (m_pAI != nullptr) {
+		CObject* pOtherObj = _pOther->GetObj();
+
+		if (m_vTarget!=nullptr&&pOtherObj->GetName() == m_vTarget->GetName()) {
+			if (m_tInfo.fTime >= m_tInfo.fAttSpeed) {
+				((CMonster*)pOtherObj)->DecreaseMonHP(m_tInfo.fAtt);
+				if (((CMonster*)pOtherObj)->GetMonHP() <= 0.f) {
+					m_vTarget = nullptr;
+				}
+				m_tInfo.fTime = 0.f;
 			}
-			m_tInfo.fTime = 0.f;
 		}
 	}
+
 }
 
 void CMonster::OnCollisionEnter(CCollider* _pOther)
@@ -76,20 +80,27 @@ void CMonster::OnCollisionEnter(CCollider* _pOther)
 
 	}*/
 
-	CObject* pOtherObj = _pOther->GetObj();
+	if (m_pAI != nullptr) {
+		CObject* pOtherObj = _pOther->GetObj();
 
-	if (pOtherObj->GetName() == m_vTarget->GetName()) {
-		m_iTargetCollision = 1;
+		if (m_vTarget != nullptr && pOtherObj->GetName() == m_vTarget->GetName()) {
+			m_iTargetCollision = 1;
+		}
 	}
+
 }
 
 void CMonster::OnCollisionExit(CCollider* _pOther)
 {
-	CObject* pOtherObj = _pOther->GetObj();
 
-	if (pOtherObj->GetName() == m_vTarget->GetName()) {
-		m_iTargetCollision = 0;
+	if (m_pAI != nullptr) {
+		CObject* pOtherObj = _pOther->GetObj();
+
+		if (m_vTarget != nullptr && pOtherObj->GetName() == m_vTarget->GetName()) {
+			m_iTargetCollision = 0;
+		}
 	}
+
 }
 
 void CMonster::render(HDC _dc)

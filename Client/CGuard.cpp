@@ -27,9 +27,10 @@ void CGuard::render(HDC _dc)
 
 void CGuard::update_animation()
 {	
-	if (GetMonCurState() == GetMonPrevState() && GetMonDir() == GetMonPrevDir()) {
-		return;
-	}
+	MON_STATE state = GetMonCurState();
+	//if (GetMonCurState() == GetMonPrevState() && GetMonDir() == GetMonPrevDir()) {
+	//	return;
+	//}
 
 	MON_STATE eCurState = GetMonCurState();
 	int iDir = GetMonDir();
@@ -77,8 +78,8 @@ CGuard::CGuard()
 	//여기 밑으로는 모든 몬스터들이 생성시 구현해야 할 것들
 
 	CreateCollider();
-	GetCollider()->SetOffsetPos(Vec2(0.f, 30.f));
-	GetCollider()->SetScale(Vec2(40.0f, 40.f));
+	GetCollider()->SetOffsetPos(Vec2(40.f, 80.f));
+	GetCollider()->SetScale(Vec2(90.0f, 80.f));
 
 	CreateRigidBody();
 
@@ -90,10 +91,10 @@ CGuard::CGuard()
 
 	GetAnimator()->CreateAnimation(L"IDLE_LEFT", pTex, Vec2(0.f, 0.f), Vec2(216.f, 216.f), Vec2(216.f, 0.f), 0.2f, 1);
 	GetAnimator()->CreateAnimation(L"IDLE_RIGHT", pTex, Vec2(0.f, 216.f), Vec2(216.f, 216.f), Vec2(216.f, 0.f), 0.2f, 1);
-	GetAnimator()->CreateAnimation(L"ATT_LEFT", pTex, Vec2(0.f, 432.f), Vec2(216.f, 216.f), Vec2(216.f, 0.f), 0.2f, 8);
-	GetAnimator()->CreateAnimation(L"ATT_RIGHT", pTex, Vec2(0.f, 648.f), Vec2(216.f, 216.f), Vec2(216.f, 0.f), 0.2f, 8);
-	GetAnimator()->CreateAnimation(L"WALK_LEFT", pTex, Vec2(0.f, 864.f), Vec2(216.f, 216.f), Vec2(216.f, 0.f), 0.2f, 3);
-	GetAnimator()->CreateAnimation(L"WALK_RIGHT", pTex, Vec2(0.f, 1080.f), Vec2(216.f, 216.f), Vec2(216.f, 0.f), 0.2f, 3);
+	GetAnimator()->CreateAnimation(L"ATT_LEFT", pTex, Vec2(0.f, 432.f), Vec2(216.f, 216.f), Vec2(216.f, 0.f), 0.2f, 3);
+	GetAnimator()->CreateAnimation(L"ATT_RIGHT", pTex, Vec2(0.f, 648.f), Vec2(216.f, 216.f), Vec2(216.f, 0.f), 0.2f, 3);
+	GetAnimator()->CreateAnimation(L"WALK_LEFT", pTex, Vec2(0.f, 864.f), Vec2(216.f, 216.f), Vec2(216.f, 0.f), 0.2f, 8);
+	GetAnimator()->CreateAnimation(L"WALK_RIGHT", pTex, Vec2(0.f, 1080.f), Vec2(216.f, 216.f), Vec2(216.f, 0.f), 0.2f, 8);
 
 	//애니메이션이 실제 물체의 위치보다 조금 더 우측 하단에 그려지게 함
 	CAnimation* pAnim = GetAnimator()->FindAnimation(L"IDLE_LEFT");
