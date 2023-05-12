@@ -356,6 +356,15 @@ CScene_Test::CScene_Test(int _row, int _column)
 	m_vP1Map.push_back(m_vMap[0][0]);
 	m_vP1Map[0]->SetBackgroundOwn(1);
 
+	for (int i = 0; i < _row; i++) {
+		for (int j = 0; j < _column; j++) {
+			if (i == 0 && j == 0) continue;
+
+			Vec2 vSpawnPos = m_vMap[i][j]->GetPos() + (m_vMap[i][j]->GetScale()/2);
+			CMonFactory::CreateAIMonster(MON_TYPE::MELEE,MON_NAME::GUARD,vSpawnPos);
+		}
+	}
+
 	LoadUI(L"ui\\ui.info", "[page1]");
 }
 

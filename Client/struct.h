@@ -86,6 +86,16 @@ public:
 		return Vec2(x * _f, y * _f);
 	}
 
+	bool operator == (Vec2 _v) {
+		if (this->x == _v.x && this->y == _v.y) return true;
+		else return false;
+	}
+
+	bool operator != (Vec2 _v) {
+		if (this->x != _v.x || this->y != _v.y) return false;
+		else return true;
+	}
+
 public:
 	Vec2()
 		:x(0.f)

@@ -313,6 +313,9 @@
     <ClInclude Include="CGuard.h">
       <Filter>Engine\04. Object\Monster\guard</Filter>
     </ClInclude>
+    <ClInclude Include="CAttState.h">
+      <Filter>Engine\08. Module\AI\State\Attack</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CCore.cpp">
@@ -447,6 +450,9 @@
     </ClCompile>
     <ClCompile Include="CGuard.cpp">
       <Filter>Engine\04. Object\Monster\guard</Filter>
+    </ClCompile>
+    <ClCompile Include="CAttState.cpp">
+      <Filter>Engine\08. Module\AI\State\Attack</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

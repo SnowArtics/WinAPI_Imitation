@@ -32,11 +32,13 @@ enum class MON_NAME {
 class CMonFactory
 {
 public:
-	static CMonster* CreateMonster(MON_TYPE _eType, MON_NAME _eName, Vec2 _vPos);
+	static UINT _iMonNum;
 
+public:
+	static CMonster* CreateMonster(MON_TYPE _eType, MON_NAME _eName, Vec2 _vPos);
+	static CMonster* CreateAIMonster(MON_TYPE _eType, MON_NAME _eName, Vec2 _vPos);
 
 private:
-	CMonFactory() {};
+	CMonFactory(){};
 	~CMonFactory() {};
 };
-

@@ -48,6 +48,7 @@ void AI::ChangeState(MON_STATE _eNextState)
 AI::AI()
 	: m_pCurState(nullptr)
 	, m_pOwner(nullptr)
+	, m_pCurTarget(nullptr)
 {
 }
 

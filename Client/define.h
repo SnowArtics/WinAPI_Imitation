@@ -112,6 +112,7 @@ enum class EVENT_TYPE {
 
 enum class MON_STATE {
 	IDLE,//대기
+	WALK, //걷기
 	TRACE,//쫓기
 	ATT,	//가까운 상대 공격
 	TARGET_ATT,// 지정한 타겟공격

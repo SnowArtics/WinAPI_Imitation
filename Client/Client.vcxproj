@@ -171,6 +171,7 @@
     <ClInclude Include="AI.h" />
     <ClInclude Include="CAnimation.h" />
     <ClInclude Include="CAnimator.h" />
+    <ClInclude Include="CAttState.h" />
     <ClInclude Include="CBackground.h" />
     <ClInclude Include="CBridge.h" />
     <ClInclude Include="CBtnUI.h" />
@@ -223,6 +224,7 @@
     <ClCompile Include="AI.cpp" />
     <ClCompile Include="CAnimation.cpp" />
     <ClCompile Include="CAnimator.cpp" />
+    <ClCompile Include="CAttState.cpp" />
     <ClCompile Include="CBackground.cpp" />
     <ClCompile Include="CBridge.cpp" />
     <ClCompile Include="CBtnUI.cpp" />
