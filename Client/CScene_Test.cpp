@@ -18,8 +18,15 @@
 #include "CMonFactory.h"
 #include "CMonster.h"
 
+#include "CCollisionMgr.h"
+
 void CScene_Test::update()
 {
+	if (!m_vP1OwnMon.empty()) {
+		CMonster* _a = (CMonster*)m_vP1OwnMon[0];
+		int a = 0;
+	}
+
 	CScene::update();
 
 	if (KEY_TAP(KEY::RBTN)) {
@@ -121,6 +128,26 @@ void CScene_Test::Enter()
 	//AddObject(pBackground, GROUP_TYPE::BACKGROUND);
 
 	CCamera::GetInst()->SetLookAt(vResolution / 2.f);
+
+	CCollisionMgr::GetInst()->CheckGroup(GROUP_TYPE::P1_BUILDING, GROUP_TYPE::MONSTER);
+	CCollisionMgr::GetInst()->CheckGroup(GROUP_TYPE::P1_BUILDING, GROUP_TYPE::MONSTER_BUILDING);
+	CCollisionMgr::GetInst()->CheckGroup(GROUP_TYPE::P1_BUILDING, GROUP_TYPE::MONSTER_MELEE_CREATURE);
+	CCollisionMgr::GetInst()->CheckGroup(GROUP_TYPE::P1_BUILDING, GROUP_TYPE::MONSTER_RANGE_CREATURE);
+
+	CCollisionMgr::GetInst()->CheckGroup(GROUP_TYPE::P1_MELEE_CREATURE, GROUP_TYPE::MONSTER);
+	CCollisionMgr::GetInst()->CheckGroup(GROUP_TYPE::P1_MELEE_CREATURE, GROUP_TYPE::MONSTER_BUILDING);
+	CCollisionMgr::GetInst()->CheckGroup(GROUP_TYPE::P1_MELEE_CREATURE, GROUP_TYPE::MONSTER_MELEE_CREATURE);
+	CCollisionMgr::GetInst()->CheckGroup(GROUP_TYPE::P1_MELEE_CREATURE, GROUP_TYPE::MONSTER_RANGE_CREATURE);
+
+	CCollisionMgr::GetInst()->CheckGroup(GROUP_TYPE::P1_RANGE_CREATURE, GROUP_TYPE::MONSTER);
+	CCollisionMgr::GetInst()->CheckGroup(GROUP_TYPE::P1_RANGE_CREATURE, GROUP_TYPE::MONSTER_BUILDING);
+	CCollisionMgr::GetInst()->CheckGroup(GROUP_TYPE::P1_RANGE_CREATURE, GROUP_TYPE::MONSTER_MELEE_CREATURE);
+	CCollisionMgr::GetInst()->CheckGroup(GROUP_TYPE::P1_RANGE_CREATURE, GROUP_TYPE::MONSTER_RANGE_CREATURE);
+
+	CCollisionMgr::GetInst()->CheckGroup(GROUP_TYPE::P1_WORKER, GROUP_TYPE::MONSTER);
+	CCollisionMgr::GetInst()->CheckGroup(GROUP_TYPE::P1_WORKER, GROUP_TYPE::MONSTER_BUILDING);
+	CCollisionMgr::GetInst()->CheckGroup(GROUP_TYPE::P1_WORKER, GROUP_TYPE::MONSTER_MELEE_CREATURE);
+	CCollisionMgr::GetInst()->CheckGroup(GROUP_TYPE::P1_WORKER, GROUP_TYPE::MONSTER_RANGE_CREATURE);
 
 	start();
 }
@@ -360,8 +387,9 @@ CScene_Test::CScene_Test(int _row, int _column)
 		for (int j = 0; j < _column; j++) {
 			if (i == 0 && j == 0) continue;
 
-			Vec2 vSpawnPos = m_vMap[i][j]->GetPos() + (m_vMap[i][j]->GetScale()/2);
-			CMonFactory::CreateAIMonster(MON_TYPE::MELEE,MON_NAME::GUARD,vSpawnPos);
+			Vec2 vSpawnPos = m_vMap[i][j]->GetPos() + Vec2(0.f, 500.f);//(m_vMap[i][j]->GetScale()/2);
+			CMonster* pMon=CMonFactory::CreateAIMonster(MON_TYPE::MELEE,MON_NAME::GUARD,vSpawnPos);
+			AddObject((CObject*)pMon, GROUP_TYPE::MONSTER_MELEE_CREATURE);
 		}
 	}
 
