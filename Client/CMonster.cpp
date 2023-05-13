@@ -12,6 +12,14 @@
 #include "CSceneMgr.h"
 #include "CScene_Test.h"
 
+#include "CRigidBody.h"
+
+#include "CState.h"
+#include "CAttState.h"
+
+#include "CAnimator.h"
+#include "CAnimation.h"
+
 void CMonster::SetAI(AI* _AI)
 {
 	m_pAI = _AI;
@@ -55,11 +63,33 @@ void CMonster::update()
 
 void CMonster::OnCollision(CCollider* _pOther)
 {
-
+	//AI오브젝트가 충돌중이면
 	if (m_pAI != nullptr) {
 		CObject* pOtherObj = _pOther->GetObj();
 
 		if (m_vTarget!=nullptr&&pOtherObj->GetName() == m_vTarget->GetName()) {
+			Vec2 vOtherObjPos = pOtherObj->GetPos();
+			Vec2 vObjPos = GetPos();
+
+			Vec2 vDir = vOtherObjPos - vObjPos;
+			vDir.Normailize();
+
+			if (m_tInfo.fTime >= m_tInfo.fAttSpeed) {
+				((CMonster*)pOtherObj)->DecreaseMonHP(m_tInfo.fAtt);
+
+				//목표 대상을 밀침
+				CRigidBody* pRigid = ((CMonster*)pOtherObj)->GetRigidBody();
+				pRigid->SetVelocity(vDir * m_tInfo.fStiffness);
+				if (((CMonster*)pOtherObj)->GetMonHP() <= 0.f) {
+					m_vTarget = nullptr;
+				}
+				m_tInfo.fTime = 0.f;
+			}
+		}
+	}
+	else {//플레이어의 오브젝트가 충돌중이면
+		CObject* pOtherObj = _pOther->GetObj();
+		if (m_vTarget != nullptr && pOtherObj->GetName() == m_vTarget->GetName()) {
 			if (m_tInfo.fTime >= m_tInfo.fAttSpeed) {
 				((CMonster*)pOtherObj)->DecreaseMonHP(m_tInfo.fAtt);
 				if (((CMonster*)pOtherObj)->GetMonHP() <= 0.f) {
@@ -80,9 +110,16 @@ void CMonster::OnCollisionEnter(CCollider* _pOther)
 
 	}*/
 
+	//AI오브젝트가 충돌중이면
 	if (m_pAI != nullptr) {
 		CObject* pOtherObj = _pOther->GetObj();
 
+		if (m_vTarget != nullptr && pOtherObj->GetName() == m_vTarget->GetName()) {
+			m_iTargetCollision = 1;
+		}
+	}
+	else {//플레이어의 오브젝트가 충돌중이면
+		CObject* pOtherObj = _pOther->GetObj();
 		if (m_vTarget != nullptr && pOtherObj->GetName() == m_vTarget->GetName()) {
 			m_iTargetCollision = 1;
 		}
@@ -92,15 +129,33 @@ void CMonster::OnCollisionEnter(CCollider* _pOther)
 
 void CMonster::OnCollisionExit(CCollider* _pOther)
 {
-
+	//AI오브젝트가 충돌중이면
 	if (m_pAI != nullptr) {
 		CObject* pOtherObj = _pOther->GetObj();
 
 		if (m_vTarget != nullptr && pOtherObj->GetName() == m_vTarget->GetName()) {
+			//ATT_STATE를 끝까지 유지하게 함.
+			UINT iMaxFrm = GetAnimator()->GetCurAnim()->GetMaxFrame();
+			int iCurFrm = GetAnimator()->GetCurAnim()->GetCurFrm();
+			CAttState* curState = (CAttState*)m_pAI->GetCurState();
+
+			float fWaitTime = (float)(iMaxFrm - 1 - iCurFrm);
+			fWaitTime *= 0.2;
+
+			curState->SetWaitTime(fWaitTime);
+			curState->SetTime(0.f);
+
 			m_iTargetCollision = 0;
 		}
 	}
+	else {//플레이어의 오브젝트가 충돌중이면
+		CObject* pOtherObj = _pOther->GetObj();
 
+		if (m_vTarget != nullptr && pOtherObj->GetName() == m_vTarget->GetName()) {
+
+			m_iTargetCollision = 0;
+		}
+	}
 }
 
 void CMonster::render(HDC _dc)
@@ -127,6 +182,9 @@ void CMonster::render(HDC _dc)
 
 void CMonster::update_state()
 {
+	if(m_vTarget!=nullptr)
+		m_vTargetPosition = m_vTarget->GetPos();
+
 	Vec2 vPos = CCamera::GetInst()->GetRenderPos(GetPos());
 	Vec2 vTargetPos = CCamera::GetInst()->GetRenderPos(m_vTargetPosition);
 	//Vec2 vTargetPos = m_vTargetPosition;
@@ -136,25 +194,59 @@ void CMonster::update_state()
 		vTargetPos = vPos;
 	}
 
-	//그냥 이동해야하는 위치가 있을 때는, WALK상태로 변환
-	if (vTargetPos.x > vPos.x) {
-		m_iDir = 1;
-		m_eCurState = MON_STATE::WALK;
+	//목표 오브젝트와 충돌중이라면
+	if (m_iTargetCollision == 1) {
+		if (vTargetPos.x > vPos.x) {
+			m_iDir = 1;
+			m_eCurState = MON_STATE::ATT;
+		}
+		else if (vTargetPos.x < vPos.x) {
+			m_iDir = -1;
+			m_eCurState = MON_STATE::ATT;
+		}
+		else {
+			m_eCurState = MON_STATE::ATT;
+		}
 	}
-	else if (vTargetPos.x < vPos.x) {
-		m_iDir = -1;
-		m_eCurState = MON_STATE::WALK;
+	else if (m_vTarget != nullptr) {//목표오브젝트가 있는데 충돌중이 아니라면
+		if (vTargetPos.x > vPos.x) {
+			m_iDir = 1;
+			m_eCurState = MON_STATE::TRACE;
+		}
+		else if (vTargetPos.x < vPos.x) {
+			m_iDir = -1;
+			m_eCurState = MON_STATE::TRACE;
+		}
+		else {
+			m_eCurState = MON_STATE::TRACE;
+		}
 	}
-	else if (vTargetPos.y != vPos.y) {
-		m_eCurState = MON_STATE::WALK;
+	else {//아니라면
+		//그냥 이동해야하는 위치가 있을 때는, WALK상태로 변환
+		if (vTargetPos.x > vPos.x) {
+			m_iDir = 1;
+			m_eCurState = MON_STATE::WALK;
+		}
+		else if (vTargetPos.x < vPos.x) {
+			m_iDir = -1;
+			m_eCurState = MON_STATE::WALK;
+		}
+		else if (vTargetPos.y != vPos.y) {
+			m_eCurState = MON_STATE::WALK;
+		}
+		else {
+			m_eCurState = MON_STATE::IDLE;
+		}
 	}
-	else {
-		m_eCurState = MON_STATE::IDLE;
-	}
+
+
 }
 
 void CMonster::update_move()
 {
+	if (m_vTarget != nullptr)
+		m_vTargetPosition = m_vTarget->GetPos();
+
 	CRigidBody* pRigid = GetRigidBody();
 
 	float randomNumber = rand() % 30;
@@ -216,6 +308,12 @@ void CMonster::MouseLbtnClicked()
 
 void CMonster::MouseRbtnDown()
 {
+	vector<CObject*> p1Mon = ((CScene_Test*)CSceneMgr::GetInst()->GetCurScene())->GetP1Mon();
+	for (int i = 0; i < p1Mon.size(); i++) {
+		if (((CMonster*)p1Mon[i])->GetClicked()) {
+			((CMonster*)p1Mon[i])->SetTarget(this);
+		}
+	}
 }
 
 void CMonster::MouseRbtnUp()

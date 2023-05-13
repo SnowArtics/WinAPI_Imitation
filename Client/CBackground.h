@@ -10,7 +10,7 @@ class CBackground :
 {
 private:
     CTexture*                           m_pBackgroundTex;
-    map<char, CObject*>       m_mapBridge;//Bridge를 넣을 map
+    map<char, CObject*>             m_mapBridge;//Bridge를 넣을 map
     CScene*                             m_pScene;//Bridge가 속해 있는 씬
 
     bool                            m_bTriggerCursor;

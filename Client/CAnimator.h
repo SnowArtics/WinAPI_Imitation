@@ -14,6 +14,7 @@ private:
 
 public:
 	CObject* GetObj() { return m_pOwner; }
+	CAnimation* GetCurAnim() { return m_pCurAnim; }
 
 public:
 	void CreateAnimation(const wstring& _strName, CTexture* _pTex, Vec2 _vLT, Vec2 _vSliceSize, Vec2 _vStep, float _fDuration, UINT _iFrameCount);//세번째 파라미터는 자르는 사이즈.네번째 파라미터는 간격

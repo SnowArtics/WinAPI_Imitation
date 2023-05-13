@@ -11,6 +11,7 @@ struct tMonInfo
     float      fAttSpeed;       //공격속도
     float      fTime;           //현재속도
     float      fDefensive;       //방어력
+    float      fStiffness;        //적에게 주는 경직도(힘)
 };
 
 class AI;
@@ -22,8 +23,8 @@ private:
     tMonInfo            m_tInfo;
     AI*                 m_pAI;
 
-    MON_STATE       m_eCurState;//몬스터의 현재 상태
-    MON_STATE       m_ePrevState;//몬스터의 이전 상태
+    MON_STATE           m_eCurState;//몬스터의 현재 상태
+    MON_STATE           m_ePrevState;//몬스터의 이전 상태
 
     Vec2                m_vTargetPosition;//몬스터가 이동해야하는 위치
     CMonster*           m_vTarget;        //몬스터가 타겟팅한 적대 몬스터
@@ -41,6 +42,8 @@ public:
     const tMonInfo& GetInfo() { return m_tInfo; }
 
     float GetMonHP() { return m_tInfo.fHP; }
+    float GetTime() { return m_tInfo.fTime; }
+    float GetAttSpeed() { return m_tInfo.fSpeed; }
 
     void DecreaseMonHP(float _f) { m_tInfo.fHP -= _f; }
 

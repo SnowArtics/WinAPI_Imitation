@@ -72,12 +72,13 @@ CMonster* CMonFactory::CreateMonster(MON_TYPE _eType, MON_NAME _eName, Vec2 _vPo
 
 			tMonInfo info = {};
 			info.fSpeed = 100.f;
-			info.fHP = 15.f;
+			info.fHP = 280.f;
 			info.fRecogRange = 1.f;
 			info.fAttRange = 10.f;
 			info.fAtt = 10.f;
 			info.fAttSpeed = 0.6f;
 			info.fDefensive = 0.f;
+			info.fStiffness = 200.f;
 
 			pMon->SetMonInfo(info);
 
@@ -150,12 +151,13 @@ CMonster* CMonFactory::CreateAIMonster(MON_TYPE _eType, MON_NAME _eName, Vec2 _v
 
 			tMonInfo info = {};
 			info.fSpeed = 100.f;
-			info.fHP = 280.f;
+			info.fHP = 15.f;
 			info.fRecogRange = 200.f;
 			info.fAttRange = 10.f;
 			info.fAtt = 10.f;
 			info.fAttSpeed = 0.6f;
 			info.fDefensive = 0.f;
+			info.fStiffness = 200.f;
 
 			pMon->SetMonInfo(info);
 

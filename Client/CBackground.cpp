@@ -127,6 +127,7 @@ void CBackground::MouseRbtnClicked()
 	for (UINT i = 0; i < vP1Mon.size(); i++) {
 		if (((CMonster*)vP1Mon[i])->GetClicked()) {
 			((CMonster*)vP1Mon[i])->SetTargetPosition(Vec2(vMousePos.x+(i*30.f), vMousePos.y + (i * 30.f)));
+			((CMonster*)vP1Mon[i])->SetTarget(nullptr);
 		}
 	}
 }
