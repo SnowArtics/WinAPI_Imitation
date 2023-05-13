@@ -12,6 +12,6 @@ public:
 	void update();
 
 private:
-	
+	CObject* GetFocusedObject();
 };
 

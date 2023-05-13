@@ -35,6 +35,8 @@ private:
     bool                m_bClicked;//현재 몬스터가 클릭이 되었는지.
     UINT                m_iType;//0이면 근거리, 1이면 원거리, 2이면 건물, -1이면 worker
 
+    float               m_fWaitTime;//ATT_STATE를 강제로 유지해주기 위한 시간
+
 public:
     float GetSpeed() { return m_tInfo.fSpeed; }
     void SetSpeed(float _f) { m_tInfo.fSpeed = _f; }
