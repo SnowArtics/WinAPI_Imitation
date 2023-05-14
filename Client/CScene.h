@@ -42,7 +42,8 @@ public:
 	inline void AddObject(CObject* _pObj, GROUP_TYPE _eType) {		m_arrObj[(UINT)_eType].push_back(_pObj);	};
 	void RegisterPlayer(CObject* _pPlayer) { m_pPlayer = _pPlayer; }
 
-	const vector<CObject*>& GetGroupObject(GROUP_TYPE _eType) {		return m_arrObj[(UINT)_eType];	}
+	const vector<CObject*>& GetGroupObject(GROUP_TYPE _eType) { return m_arrObj[(UINT)_eType]; }
+	vector<CObject*>& GetGroupObjectC(GROUP_TYPE _eType) {		return m_arrObj[(UINT)_eType];	}
 	void DeleteGroup(GROUP_TYPE _eTarget);
 	void DeleteAll();
 

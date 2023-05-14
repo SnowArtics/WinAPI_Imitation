@@ -27,31 +27,7 @@ CMonster* CMonFactory::CreateMonster(MON_TYPE _eType, MON_NAME _eName, Vec2 _vPo
 	{
 	case MON_TYPE::NORMAL:
 	{
-		pMon = new CMonster;
-		pMon->SetPos(_vPos);
-		pMon->SetTargetPosition(_vPos);
-		pMon->SetName(wMonName);
-
-		tMonInfo info = {};
-		info.fAtt = 10.f;
-		info.fAttRange = 50.f;
-		info.fRecogRange = 300.f;
-		info.fHP = 100.f;
-		info.fSpeed = 100.f;
-
-		pMon->SetMonInfo(info);
-
-		pMon->CreateRigidBody();
-		pMon->GetRigidBody()->SetMass(1.f); 
-
-		//AI* pAI = new AI;
-		//pAI->AddState(new CIdleState);
-		//pAI->AddState(new CTraceState);
-		//pAI->SetCurState(MON_STATE::IDLE);
-
-		//pMon->SetAI(pAI);
 	}
-
 		break;
 	case MON_TYPE::WORKER:
 
@@ -78,15 +54,12 @@ CMonster* CMonFactory::CreateMonster(MON_TYPE _eType, MON_NAME _eName, Vec2 _vPo
 			info.fAtt = 10.f;
 			info.fAttSpeed = 0.6f;
 			info.fDefensive = 0.f;
-			info.fStiffness = 200.f;
+			info.fStiffness = 100.f;
 
 			pMon->SetMonInfo(info);
 
 			//모든 오브젝트는 충돌체와 애니메이터와 강체를 들고있음.
 			//세부조정은 몬스터마다 다르니 몬스터의 코드에서 조절해 주기.
-
-			pMon->CreateRigidBody();
-			pMon->GetRigidBody()->SetMass(1.f);
 		}
 
 			break;
@@ -157,15 +130,12 @@ CMonster* CMonFactory::CreateAIMonster(MON_TYPE _eType, MON_NAME _eName, Vec2 _v
 			info.fAtt = 10.f;
 			info.fAttSpeed = 0.6f;
 			info.fDefensive = 0.f;
-			info.fStiffness = 200.f;
+			info.fStiffness = 100.f;
 
 			pMon->SetMonInfo(info);
 
 			//모든 오브젝트는 충돌체와 애니메이터와 강체를 들고있음.
 			//세부조정은 몬스터마다 다르니 몬스터의 코드에서 조절해 주기.
-
-			pMon->CreateRigidBody();
-			pMon->GetRigidBody()->SetMass(1.f);
 
 			AI* pAI = new AI;
 			pAI->AddState(new CIdleState);

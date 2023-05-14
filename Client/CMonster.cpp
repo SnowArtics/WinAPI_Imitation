@@ -35,7 +35,7 @@ void CMonster::update()
 {
 	m_tInfo.fTime += fDT;
 
-	if (m_tInfo.fTime >= 100000.f)
+	if (m_tInfo.fTime >= 10000.f)
 		m_tInfo.fTime = 0.f;
 
 	if (m_tInfo.fHP <= 0.f) {
@@ -47,6 +47,7 @@ void CMonster::update()
 
 
 	if (m_pAI == nullptr) {
+
 		srand(time(nullptr));		
 
 		if (KEY_TAP(KEY::LBTN)) m_bClicked = false;
@@ -57,6 +58,12 @@ void CMonster::update()
 		update_move();
 		update_state();
 		//update_animation()는 자식 몬스터들이 해줌
+
+		if (m_fWaitTime <= -10000.f)
+			m_fWaitTime = -1.f;
+
+
+		m_fWaitTime -= fDT;
 	}
 
 }
@@ -82,6 +89,7 @@ void CMonster::OnCollision(CCollider* _pOther)
 				pRigid->SetVelocity(vDir * m_tInfo.fStiffness);
 				if (((CMonster*)pOtherObj)->GetMonHP() <= 0.f) {
 					m_vTarget = nullptr;
+					m_iTargetCollision = 0;
 				}
 				m_tInfo.fTime = 0.f;
 			}
@@ -90,10 +98,29 @@ void CMonster::OnCollision(CCollider* _pOther)
 	else {//플레이어의 오브젝트가 충돌중이면
 		CObject* pOtherObj = _pOther->GetObj();
 		if (m_vTarget != nullptr && pOtherObj->GetName() == m_vTarget->GetName()) {
+			Vec2 vOtherObjPos = pOtherObj->GetPos();
+			Vec2 vObjPos = GetPos();
+
+			Vec2 vDir = vOtherObjPos - vObjPos;
+			vDir.Normailize();
+
 			if (m_tInfo.fTime >= m_tInfo.fAttSpeed) {
 				((CMonster*)pOtherObj)->DecreaseMonHP(m_tInfo.fAtt);
+
+				//목표 대상을 밀침
+				CRigidBody* pRigid = ((CMonster*)pOtherObj)->GetRigidBody();
+				pRigid->SetVelocity(vDir * m_tInfo.fStiffness);
+
 				if (((CMonster*)pOtherObj)->GetMonHP() <= 0.f) {
+					SetTargetPosition(GetPos());
 					m_vTarget = nullptr;
+					//ATT_STATE를 끝까지 유지하게 함
+					UINT iMaxFrm = GetAnimator()->GetCurAnim()->GetMaxFrame();
+					int iCurFrm = GetAnimator()->GetCurAnim()->GetCurFrm();
+
+					m_fWaitTime = (float)(iMaxFrm - 1 - iCurFrm);
+					m_fWaitTime *= 0.2;
+					m_iTargetCollision = 0;
 				}
 				m_tInfo.fTime = 0.f;
 			}
@@ -152,6 +179,12 @@ void CMonster::OnCollisionExit(CCollider* _pOther)
 		CObject* pOtherObj = _pOther->GetObj();
 
 		if (m_vTarget != nullptr && pOtherObj->GetName() == m_vTarget->GetName()) {
+			//ATT_STATE를 끝까지 유지하게 함
+			UINT iMaxFrm = GetAnimator()->GetCurAnim()->GetMaxFrame();
+			int iCurFrm = GetAnimator()->GetCurAnim()->GetCurFrm();
+
+			m_fWaitTime = (float)(iMaxFrm - 1 - iCurFrm);
+			m_fWaitTime *= 0.2;
 
 			m_iTargetCollision = 0;
 		}
@@ -182,6 +215,7 @@ void CMonster::render(HDC _dc)
 
 void CMonster::update_state()
 {
+
 	if(m_vTarget!=nullptr)
 		m_vTargetPosition = m_vTarget->GetPos();
 
@@ -195,7 +229,7 @@ void CMonster::update_state()
 	}
 
 	//목표 오브젝트와 충돌중이라면
-	if (m_iTargetCollision == 1) {
+	if (m_iTargetCollision == 1|| m_fWaitTime>=0.f) {
 		if (vTargetPos.x > vPos.x) {
 			m_iDir = 1;
 			m_eCurState = MON_STATE::ATT;
@@ -266,8 +300,11 @@ void CMonster::update_move()
 	//}
 
 	//목표위치에 도달할 때 까지 계속 이동함
-	if (m_eCurState == MON_STATE::WALK) {
+	if (m_eCurState == MON_STATE::WALK|| m_eCurState == MON_STATE::TRACE) {
 		Vec2 vMovePos = vTargetPos - vPos;
+		if (vTargetPos == vPos)
+			return;
+
 		vMovePos.Normailize();
 
 		vPos.x += m_tInfo.fSpeed * vMovePos.x * fDT;
@@ -308,12 +345,7 @@ void CMonster::MouseLbtnClicked()
 
 void CMonster::MouseRbtnDown()
 {
-	vector<CObject*> p1Mon = ((CScene_Test*)CSceneMgr::GetInst()->GetCurScene())->GetP1Mon();
-	for (int i = 0; i < p1Mon.size(); i++) {
-		if (((CMonster*)p1Mon[i])->GetClicked()) {
-			((CMonster*)p1Mon[i])->SetTarget(this);
-		}
-	}
+
 }
 
 void CMonster::MouseRbtnUp()
@@ -322,6 +354,12 @@ void CMonster::MouseRbtnUp()
 
 void CMonster::MouseRbtnClicked()
 {
+	vector<CObject*> p1Mon = ((CScene_Test*)CSceneMgr::GetInst()->GetCurScene())->GetP1Mon();
+	for (int i = 0; i < p1Mon.size(); i++) {
+		if (((CMonster*)p1Mon[i])->GetClicked()) {
+			((CMonster*)p1Mon[i])->SetTarget(this);
+		}
+	}
 }
 
 CMonster::CMonster()
@@ -335,6 +373,7 @@ CMonster::CMonster()
 	, m_iDir(1)
 	, m_iPrevDir(1)
 	, m_bClicked(false)
+	, m_fWaitTime(0.f)
 {
 }
 
@@ -346,10 +385,13 @@ CMonster::~CMonster()
 	if (nullptr == m_pAI) {
 		CScene_Test* _pCurScene = (CScene_Test*)CSceneMgr::GetInst()->GetCurScene();
 		vector<CObject*> _vP1Mon = _pCurScene->GetP1Mon();
-		auto index = std::find(_vP1Mon.begin(), _vP1Mon.end(), this);
 
-		if (index == _vP1Mon.end())
-			assert(true);
-		auto iter = _vP1Mon.erase(index);
+		if (!_vP1Mon.empty()) {
+			auto index = std::find(_vP1Mon.begin(), _vP1Mon.end(), this);
+
+			if (index == _vP1Mon.end())
+				assert(true);
+			auto iter = _vP1Mon.erase(index);
+		}
 	}
 }

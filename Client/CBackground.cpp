@@ -31,6 +31,8 @@ void CBackground::start()
 
 void CBackground::update()
 {
+	m_bPrevTriggerCursor = m_bTriggerCursor;
+
 	MouseOnCheck();
 }
 
@@ -78,7 +80,7 @@ void CBackground::MouseLbtnUp()
 
 void CBackground::MouseLbtnClicked()
 {
-	if (m_bTriggerCursor&& m_iOwn==1) {
+	if (m_bTriggerCursor&& m_iOwn==1 && m_bPrevTriggerCursor) {
 		//Vec2 vMousePos = MOUSE_POS;
 		//Vec2 vMousePos = CCamera::GetInst()->GetRenderPos(MOUSE_POS);
 		Vec2 vMousePos = CCamera::GetInst()->GetRealPos(MOUSE_POS);

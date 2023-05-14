@@ -13,6 +13,7 @@ private:
     map<char, CObject*>             m_mapBridge;//Bridge를 넣을 map
     CScene*                             m_pScene;//Bridge가 속해 있는 씬
 
+    bool                            m_bPrevTriggerCursor;
     bool                            m_bTriggerCursor;
     MON_TYPE                        m_eMonType;//클릭시 생성할 몬스터의 타입
     MON_NAME                        m_eMonName;//클릭시 생성할 몬스터의 이름

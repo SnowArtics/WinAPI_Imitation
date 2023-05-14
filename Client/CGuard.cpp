@@ -8,6 +8,7 @@
 #include "CAnimator.h"
 #include "CObject.h"
 #include "CAnimation.h"
+#include "CRigidBody.h"
 
 
 void CGuard::update()
@@ -82,6 +83,7 @@ CGuard::CGuard()
 	GetCollider()->SetScale(Vec2(90.0f, 80.f));
 
 	CreateRigidBody();
+	GetRigidBody()->SetMass(1.f);
 
 	SetScale(Vec2(90.f, 120.f));
 
