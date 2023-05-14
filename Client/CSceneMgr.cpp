@@ -4,6 +4,7 @@
 #include "CScene_Tool.h"
 #include "CEventMgr.h"
 #include "CScene_Test.h"
+#include "CScene_Intro.h"
 
 CSceneMgr::CSceneMgr()
 	:m_arrScene{}
@@ -31,11 +32,14 @@ void CSceneMgr::init()
 	m_arrScene[(UINT)SCENE_TYPE::TEST] = new CScene_Test(3,3);
 	m_arrScene[(UINT)SCENE_TYPE::TEST]->SetName(L"Test Scene");
 
+	m_arrScene[(UINT)SCENE_TYPE::INTRO] = new CScene_Intro();
+	m_arrScene[(UINT)SCENE_TYPE::INTRO]->SetName(L"Intro Scene");
+
 	//m_arrScene[(UINT)SCENE_TYPE::STAGE_01] = new CScene_Stage01;
 	//m_arrScene[(UINT)SCENE_TYPE::STAGE_02] = new CScene_Stage02;
 
 	//ÇöÀç ¾À ÁöÁ¤
-	m_pCurScene = m_arrScene[(UINT)SCENE_TYPE::TEST];
+	m_pCurScene = m_arrScene[(UINT)SCENE_TYPE::INTRO];
 
 	m_pCurScene->Enter();
 }

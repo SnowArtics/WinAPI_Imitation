@@ -13,8 +13,6 @@ void CPanelUI::render(HDC _dc)
 {
 	CUI::render(_dc);
 
-	CUI::render(_dc);
-
 	Vec2 vPos = GetPos();
 
 	CTexture* pTex = GetTexture();

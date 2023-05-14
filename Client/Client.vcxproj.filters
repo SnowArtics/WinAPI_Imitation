@@ -161,6 +161,12 @@
     <Filter Include="Engine\04. Object\Monster\guard">
       <UniqueIdentifier>{60348346-cac7-492e-920b-c237c7aa68d4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\05. Scene\Scene_Intro">
+      <UniqueIdentifier>{65afb48c-3fa8-4d61-ac28-96a5df58937f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\04. Object\back">
+      <UniqueIdentifier>{e5945833-ada1-4955-b421-60df353de5df}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CCore.h">
@@ -316,6 +322,12 @@
     <ClInclude Include="CAttState.h">
       <Filter>Engine\08. Module\AI\State\Attack</Filter>
     </ClInclude>
+    <ClInclude Include="CScene_Intro.h">
+      <Filter>Engine\05. Scene\Scene_Intro</Filter>
+    </ClInclude>
+    <ClInclude Include="CBack.h">
+      <Filter>Engine\04. Object\back</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CCore.cpp">
@@ -453,6 +465,12 @@
     </ClCompile>
     <ClCompile Include="CAttState.cpp">
       <Filter>Engine\08. Module\AI\State\Attack</Filter>
+    </ClCompile>
+    <ClCompile Include="CScene_Intro.cpp">
+      <Filter>Engine\05. Scene\Scene_Intro</Filter>
+    </ClCompile>
+    <ClCompile Include="CBack.cpp">
+      <Filter>Engine\04. Object\back</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
