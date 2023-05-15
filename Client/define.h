@@ -33,6 +33,7 @@
 enum class GROUP_TYPE {//렌더링 기준이고 충돌 기준임
 
 	DEFAULT,
+	BACK,
 	BACKGROUND,
 	BRIDGE,
 	TILE,
@@ -72,7 +73,10 @@ enum class GROUP_TYPE {//렌더링 기준이고 충돌 기준임
 
 
 enum class SCENE_TYPE {
+	INTRO,
 	TEST,
+	
+	
 	TOOL,
 	START,
 

@@ -11,6 +11,9 @@
 #include "CTexture.h"
 #include "CResMgr.h"
 
+#include "CSceneMgr.h"
+#include "CScene.h"
+
 CCamera::CCamera()
 	: m_pTargetObj(nullptr)
 	, m_fTime(0.5f)
@@ -43,14 +46,19 @@ void CCamera::update()
 		}
 	}
 
-	if (KEY_HOLD(KEY::UP))
-		m_vLookAt.y -= 2000.f * fDT;
-	if (KEY_HOLD(KEY::DOWN))
-		m_vLookAt.y += 2000.f * fDT;
-	if (KEY_HOLD(KEY::LEFT))
-		m_vLookAt.x -= 2000.f * fDT;
-	if (KEY_HOLD(KEY::RIGHT))
-		m_vLookAt.x += 2000.f * fDT;
+	CScene* _pCurScene = CSceneMgr::GetInst()->GetCurScene();
+	wstring _sSceneName = _pCurScene->GetName();
+
+	if (_sSceneName == L"Test Scene") {
+		if (KEY_HOLD(KEY::W))
+			m_vLookAt.y -= 2000.f * fDT;
+		if (KEY_HOLD(KEY::S))
+			m_vLookAt.y += 2000.f * fDT;
+		if (KEY_HOLD(KEY::A))
+			m_vLookAt.x -= 2000.f * fDT;
+		if (KEY_HOLD(KEY::D))
+			m_vLookAt.x += 2000.f * fDT;
+	}
 
 	//화면 중앙좌표와 카메라 LookAt좌표간의 차이값 계산
 	CalDiff();
